@@ -298,6 +298,6 @@ TSWLatexianTemp*
 *.ist
 
 # Added on 28/02
-*.ini
+#*.ini
 *.atfi
 *.json
