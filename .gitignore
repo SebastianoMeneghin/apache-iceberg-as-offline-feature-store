@@ -297,7 +297,7 @@ TSWLatexianTemp*
 
 *.ist
 
-# Added on 28/02
+# Added on 28/02 to remove not useful to save files
 *.ini
 *.atfi
 *.json
