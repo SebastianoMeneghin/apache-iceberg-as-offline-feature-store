@@ -262,8 +262,8 @@ nopostdot]{glossaries}
 %%
 \authorsLastname{Meneghin}
 \authorsFirstname{Sebastiano}
-\email{a@kth.se}
-\kthid{u100001}
+\email{meneghin@kth.se}
+\kthid{u16dn7xj}
 %% As per email from KTH Biblioteket on 2021-06-28 students cannot have an OrCiD reported for their degree project
 \authorsSchool{\schoolAcronym{EECS}}
 %% If the student is not in Stockholm, Sweden, add that information here
@@ -277,69 +277,63 @@ nopostdot]{glossaries}
 %%
 %% SUPERVISOR INFO
 %%
-\supervisorAsLastname{Supervisor}
-\supervisorAsFirstname{A. Busy}
-\supervisorAsEmail{sa@kth.se}
+\supervisorAsLastname{Sheikholeslami}
+\supervisorAsFirstname{Sina}
+\supervisorAsEmail{sinash@kth.se}
 %% If the supervisor is from within KTH add their KTHID, School and Department info
-\supervisorAsKTHID{u100003}
+\supervisorAsKTHID{u1znylhw}
 \supervisorAsSchool{\schoolAcronym{EECS}}
 \supervisorAsDepartment{Computer Science}
-%% other for a supervisor outside of KTH add their organization info
-%\supervisorAsOrganization{Timbuktu University, Department of Pseudoscience}
+
 
 %%If there is a second supervisor add them here:
-\supervisorBsLastname{Supervisor}
-\supervisorBsFirstname{Another Busy}
-\supervisorBsEmail{sb@kth.se}
+\supervisorBsLastname{Schmidt}
+\supervisorBsFirstname{Fabian}
+\supervisorBsEmail{fschm@kth.se}
 %% If the supervisor is from within KTH add their KTHID, School and Department info
-\supervisorBsKTHID{u100003}
-\supervisorBsSchool{\schoolAcronym{ABE}}
-\supervisorBsDepartment{Architecture}
-%% other for a supervisor outside of KTH add their organization info
-%\supervisorBsOrganization{Timbuktu University, Department of Pseudoscience}
+\supervisorBsKTHID{u1znylhw}
+\supervisorAsSchool{\schoolAcronym{EECS}}
+\supervisorAsDepartment{Computer Science}
+
 
 %%If there is a third supervisor add them here:
-\supervisorCsLastname{Supervisor}
-\supervisorCsFirstname{Third Busy}
-\supervisorCsEmail{sc@tu.va}
-%% If the supervisor is from within KTH add their KTHID, School and Department info
-%\supervisorCsKTHID{u100004}
-%\supervisorCsSchool{\schoolAcronym{ABE}}
-%\supervisorCsDepartment{Public Buildings}
+\supervisorCsLastname{Dowling}
+\supervisorCsFirstname{Jim}
+\supervisorCsEmail{jim@hopsworks.ai}
 % other for a supervisor outside of KTH add their organization info
-\supervisorCsOrganization{Timbuktu University, Department of Pseudoscience}
+\supervisorCsOrganization{Hopsworks AB}
+
 
 %%
 %% EXAMINER INFO
 %%
-\examinersLastname{Maguire Jr.}
-\examinersFirstname{Gerald Q.}
-\examinersEmail{maguire@kth.se}
+\examinersLastname{Vlassov}
+\examinersFirstname{Vladimir}
+\examinersEmail{vladv@kth.se}
 %% If the examiner is from within KTH add their KTHID, School and Department info
-\examinersKTHID{u1d13i2c}
+\examinersKTHID{u19yb2c8}
 \examinersSchool{\schoolAcronym{EECS}}
 \examinersDepartment{Computer Science}
-%% other for a examiner outside of KTH add their organization info
-%\examinersOrganization{Timbuktu University, Department of Pseudoscience}
 
 
-\hostcompany{Företaget AB} % Remove this line if the project was not done at a host company
-%\hostorganization{CERN}   % if there was a host organization
+\hostcompany{Hopsworks AB} % Remove this line if the project was not done at a host company
 
 \date{\today}
+
 
 %%
 %% COURSE INFO
 %%
-\courseCycle{1}
-\courseCode{IA150X}
-\courseCredits{15.0}
+\courseCycle{2}
+\courseCode{DA258X}
+\courseCredits{30.0}
 
-\programcode{TCOMK}
-\degreeName{Bachelors degree}
+\programcode{TIVNM}
+\degreeName{Master's Programme, Distributed Systems and Data Mining for Big Data, 120 credits}
 %% Note that the subject area for a Bachelor's thesis (Kandidatexamen) should be either Technology or Architecture
 %% If the thesis is in Swedish, these would be: teknik | arkitektur -- Note the use of lower case
-\subjectArea{Technology}
+\subjectArea{Computer Science}
+\secondSubjectArea{Data Science}
 %% if there is a second degree
 %\secondProgramcode{CINTE}
 %\secondDegreeName{test second degree}
@@ -440,17 +434,17 @@ nopostdot]{glossaries}
 % 20207 Inbäddad systemteknik Embedded Systems
 % 20299 Annan elektroteknik och elektronik Other Electrical Engineering, Electronic Engineering, Information Engineering
 %% Example for a thesis in Computer Science and Computer Systems
-\nationalsubjectcategories{10201, 10206}
+\nationalsubjectcategories{10201, 10205, 10206}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                        TITLE OF TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{This is the title in the language of the thesis}
-\subtitle{A subtitle in the language of the thesis}
+\title{Accelerating Feature Store performance with Apache Iceberg}
+\subtitle{A Python-based alternative delivering speed and scalability without Spark dependency}
 
 %% give the alternative title - i.e., if the thesis is in English, then give a Swedish title
-\alttitle{Detta är den svenska översättningen av titeln}
-\altsubtitle{Detta är den svenska översättningen av undertiteln}
+\alttitle{Snabbare prestanda för Feature Store med Apache Iceberg}
+\altsubtitle{Ett Python-baserat alternativ som ger snabbhet och skalbarhet utan Spark-beroende}
 %% alternative, if the thesis is in Swedish, then give an English title
 %\alttitle{This is the English translation of the title}
 %\altsubtitle{This is the English translation of the subtitle}
@@ -730,31 +724,31 @@ If you add a new language, when specifying the language for the abstract, use th
 
 \chapter{Background}
     \label{ch:background}
-    \input{contents/2-background/draft}
+    \input{contents/2-background/_all}
 
 \cleardoublepage
 
 \chapter{Method}
     \label{ch:method}
-    \input{contents/3-method/draft}
+    \input{contents/3-method/_all}
 
 \cleardoublepage
 
 \chapter{Implementation}\engExpl{Choose your own chapter title to describe this}
     \label{ch:implementation}
-    \input{contents/4-implementation/draft}
+    \input{contents/4-implementation/_all}
 
 \cleardoublepage
 
 \chapter{Results and Analysis}
     \label{ch:results_and_analysis}
-    \input{contents/5-results_and_analysis/draft}
+    \input{contents/5-results_and_analysis/_all}
 
 \cleardoublepage
 
 \chapter{Conclusions and Future work}
     \label{ch:conclusions_and_future_work}
-    \input{contents/6-conclusions_and_future_work/draft}
+    \input{contents/6-conclusions_and_future_work/_all}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 REFERENCES
