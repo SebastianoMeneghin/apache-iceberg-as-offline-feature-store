@@ -1,0 +1,23 @@
+There are three crucial components for a comprehensive understanding of this work: the evolution of data infrastructure to data lakehouses, the role of Spark as data management tool, and the rise of Python to the most used programming language in the data science field.
+
+\smallskip
+
+The term "data lakehouse" was used by Databricks in 2020 \cite{WhatLakehouse2020} to characterise a new architectural standard developing across the industry. This novel paradigm integrates the data lake's capacity to store and manage unstructured data with the \gls{ACID} features characteristic of data warehouses.
+Data warehouses bacame the standard in the 1990s and early 2000s \cite{chaudhuriOverviewDataWarehousing1997}, facilitating firms in deriving business intelligence insights from data coming from various structured data sources. The architectural issues of this technology became evident at the end of the 2010s, with the rise of Big Data, characterized by increasing volumes, variety, and velocity of data, including significant amounts of unstructured information \cite{ederUnstructuredData802008}. 
+Data lakes were thus introduced, as a more flexible and scalable solution, serving as a central repository for all data. They also enable the development of more intricate built-upon architectures, including data warehouses for \gls{BI} and \gls{ML} pipelines. While being more appropriate for unstructured data, this architecture entails several complications and expenses associated with the need for duplicated data (data lake and data warehouse) and complex \gls{ELT}/\gls{ETL} pipelines.
+Data lakehouse solutions addressed the challenges of data lakes  by combining the best of both worlds: the flexibility and scalability of data lakes with the data governance, reliability, and performance of data warehouses. This is achieved by integrating data management and performance capabilities directly into open data formats like Parquet \cite{DremelMadeSimple}. Three pivotal technologies facilitated this paradigm:
+\begin{itemize}
+    \item A metadata layer, providing data lineage and facilitating efficient data discovery and access;
+    \item An optimized query engine, leveraging techniques like \gls{RAM}/\gls{SSD} caching and advanced query optimization;
+    \item A user-friendly API, Simplifying data access and integration with \gls{ML} and \gls{AI} applications.
+\end{itemize}
+Uber first open-sourced this architectural design with Hudi in 2017 \cite{rajaperumalUberEngineeringIncremental2017}, followed by Netflix in 2018, with Iceberg \cite{IcebergExamples2024}, and ultimately by Databricks, with Delta Lake in 2020 \cite{armbrustDeltaLakeHighperformance2020}.
+
+\smallskip
+
+%%%%% Spark
+
+
+\smallskip
+
+%%%%%% Python
