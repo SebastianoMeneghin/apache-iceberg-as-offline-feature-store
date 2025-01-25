@@ -297,3 +297,6 @@ TSWLatexianTemp*
 *.atfi
 # ForDiva JSON file
 fordiva.json
+
+# For VSC files
+.vscode/
