@@ -994,16 +994,16 @@
   file = {C:\Users\Sebas\Zotero\storage\V7H69UZK\Armbrust et al. - 2021 - Lakehouse A New Generation of Open Platforms that.pdf}
 }
 
-@phdthesis{manfredigiovanniReducingReadWrite2024,
-  title = {Reducing Read and Write Latency in a {{Delta Lake-backed}} Offline Feature Store},
+@book{manfrediReducingReadWrite2024,
+  title = {Reducing Read and Write Latency in a {{Delta Lake-backed}} Offline Feature Store : {{Adding}} Support for {{HDFS}} and {{HopsFS}} in the Delta-Rs {{Rust}} Library to Reduce Read and Write Latency on the {{Delta Lake-backed Hopsworks}} Offline Feature Store},
+  shorttitle = {Reducing Read and Write Latency in a {{Delta Lake-backed}} Offline Feature Store},
   author = {Manfredi, Giovanni},
   year = {2024},
-  month = nov,
-  address = {Stockholm},
-  abstract = {The need to build Machine Learning (ML) models based on large amounts of data brought new challenges to data management systems. Feature stores have emerged as a centralized data platform enabling feature reuse while ensuring consistency between feature engineer ing, model training, and inference. Recent publications demonstrate that the Hopsworks feature store outperforms existing cloud-based alternatives in training and online infer ence query workloads. In its offline feature store, the Hopsworks feature store stores batch or historical data, collecting it into feature groups organized in Apache Hudi tables and stored on HopsFS, Hopsworks HDFS distribution. However, even in this system, the latency to perform a write operation is at least one or more minutes, even for small quantities of data (1 GB or less). The hypothesis of this work is that the limitation is caused by Spark, which the system uses to write data on Apache Hudi tables. A promising approach to avoid using Spark appears to be adopting Delta Lake instead of Apache Hudi and access data using a Rust library called delta-rs. This thesis investigates the possibility of reducing the read and write latency in the offline feature store by expanding the delta rs library to support HDFS and HopsFS and comparatively evaluating the performance of the legacy and newly implemented system. Two major iterations of storage support in delta-rs for HopsFS were developed to meet the strict production-ready requirements. The system was then evaluated by performing and measuring read and write operations increasing the number of CPU cores up to eight. Results confirmed the superior perfor mance of the delta-rs library over the Spark system in all write operations with a latency reduction from ten up to forty times. Delta-rs also surpassed the Spark alternative in read operations with a latency reduction of forty-seven percent, up to forty times. These findings encourage future research investigating Spark alternative when optimizing performance in small-scale (1 GB - 100 GB) data management systems. The system developed will find application in the Hopsworks feature store production environment},
+  publisher = {KTH Royal Institute of Technology},
+  urldate = {2025-01-25},
+  abstract = {The need to build Machine Learning (ML) models based on ever-increasing amounts of data brought new challenges to data management systems. Feature stores have emerged as a centralized data platform ...},
   langid = {english},
-  school = {KTH Royal Institute of Technology / KTH, School of Electrical Engineering and Computer Science (EECS) / KTH, School of Electrical Engineering and Computer Science (EECS)},
-  file = {C:\Users\Sebas\Zotero\storage\3DPHEREI\Manfredi, Giovanni - 2024 - Reducing read and write latency in a Delta Lake-ba.pdf}
+  file = {C:\Users\Sebas\Zotero\storage\UPTLR3QE\Manfredi - 2024 - Reducing read and write latency in a Delta Lake-ba.pdf}
 }
 
 @misc{MaximizingDeveloperEffectiveness,
@@ -1269,6 +1269,18 @@
   howpublished = {https://www.packtpub.com/en-us/product/python-machine-learning-9781789955750?type=print},
   langid = {english},
   file = {C:\Users\Sebas\Zotero\storage\FM6B6YXR\python-machine-learning-9781789955750.html}
+}
+
+@misc{PythonTopLanguage,
+  title = {Octoverse: {{AI}} Leads {{Python}} to Top Language as the Number of Global Developers Surges},
+  shorttitle = {Octoverse},
+  author = {Staff, GitHub},
+  year = {2024},
+  month = oct,
+  journal = {The GitHub Blog},
+  urldate = {2025-01-25},
+  abstract = {In this year's Octoverse report, we study how public and open source activity on GitHub shows how AI is expanding as the global developer community surges in size.},
+  langid = {american}
 }
 
 @inproceedings{raasveldtDuckDBEmbeddableAnalytical2019,
