@@ -15,9 +15,16 @@ Uber first open-sourced this architectural design with Hudi in 2017 \cite{rajape
 
 \smallskip
 
-%%%%% Spark
-
+Spark is a distributed computing platform designed to facilitate large-scale, data-intensive applications \cite{zaharia2010spark}. Developed as an improvement over Hadoop MapReduce (from now on just MapReduce), Spark addresses its limitations, such as high latency due to disk I/O and limited support for iterative algorithms. Spark achieves significantly higher performance by leveraging in-memory computing, eliminating the need for frequent disk access to store intermediate results. This, coupled with its DAG execution model, \glspl{RDD}, and support for multiple processing models (batch, stream, \gls{ML}, graph), has established Spark as the de facto standard for many data-intensive workloads.
+While Spark offers a powerful and versatile platform, it may not always be the most suitable choice for all scenarios. For instance, Apache Flink \cite{carboneApacheFlinkStream}, specifically designed for stream and real-time processing, excels in low-latency applications where Spark may exhibit higher latency. Similarly, for small-scale datasets (from 1 GB to 100 GB), the overhead associated with launching and managing a Spark cluster can be substantial. In such cases, in-memory \gls{DBMS} like DuckDB \cite{raasveldtDuckDBEmbeddableAnalytical2019} and Polars \cite{vinkWroteOneFastest2021} offer compelling alternatives. These solutions, optimized for smaller datasets, provide high-performance OLAP capabilities and DataFrame operations within an embedded environment, delivering significantly faster results compared to initiating a Spark cluster for equivalent tasks.
+This project will investigate the feasibility of employing alternatives to Spark for efficient data processing on small-scale datasets, exploring their potential advantages in terms of performance.
 
 \smallskip
 
-%%%%%% Python
+Python reigns supreme as the programming language of choice for data scientists \cite{Python_CS-R9526}. Its user-friendliness, high-level abstraction, and emphasis on clear code expression initially attracted a large and enthusiastic community \cite{StackOverflowDeveloper}. This supportive community, in turn, fueled the development of a vast ecosystem of libraries and \glspl{API} specifically designed for data science tasks. Over three decades, Python has become the de facto standard in this domain, with popular libraries like NumPy, Pandas, PyTorch and TensorFlow, forming the backbone of countless data science projects. Python is regarded as the most popular programming language based on the volume of search results for the query (\textit{+"<language> programming"}) across 25 distinct search engines~\footnote{Evaluation methodology defined at \url{https://www.tiobe.com/tiobe-index/programminglanguages_definition/}}. The TIOBE index \cite{TIOBEIndex} and 2024 GitHub report \cite{PythonTopLanguage} underscore the current trends, clearly demonstrating Python's ascendance, also evident from the following milestones:
+\begin{itemize}
+    \item Python surpasses C in 2021
+    \item Python surpasses Java in 2022
+    \item Python surpasses JavaScript in 2024
+\end{itemize}
+These results emphasise the need of offering Python \glspl{API}, especially for programmers and data scientists, to augment interaction and broaden the framework's possibilities.
