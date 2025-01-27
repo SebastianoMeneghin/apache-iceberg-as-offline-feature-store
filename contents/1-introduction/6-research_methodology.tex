@@ -10,8 +10,3 @@ The \glspl{PA} will be validated in Chapter \ref{ch:background_and_related_work}
 \end{itemize}
 
 This thesis work fulfill the \glspl{IN} following a system implementation and evaluation guided by its \glspl{G}. Initally, an integration between PyIceberg and \glspl{HopsFS} will be implemented \cite{niaziHopsFSScalingHierarchical2017}, followed by test to validate the approach. Then, an evaluation structure will be designed and used to compare the performances of the current legacy system, the newly integrated PyIceberg pipeline and the delta-rs pipeline developed in the related work. These experiments will involve datasets of varying sizes (from 1 GB to 100 GB) and evaluate critical performance metrics such as read and write latency, measured in seconds, and throughput, measured in rows per second. The latency will be directly measured, wile the throughput will be computed from the former. Those two metrics were chosen they most affect the computational time of accessing table formats, and can thus be used as a fair comparator between pipelines.
-
-
-\subsection{Delimitations}
-    \label{subsec:delimitations}
-    \input{contents/1-introduction/7-delimitations}
