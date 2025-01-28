@@ -97,8 +97,19 @@ Overall, object storage is an excellent choice for use cases requiring high scal
     \end{tabular}
 \end{table}
 
-
 \subsection{\glsfmtlong{HDFS}}
+% Restart from
+Prova prova
+
+Figure \ref{fig:hdfs_schema} presents a simplified visual representation of the Namenode and Datanodes basic operations in \gls{HDFS}.
+
+\begin{figure}[!ht]
+    \begin{center}
+      \includegraphics[width=\textwidth]{figures/2-background_and_related_work/hdfs_schema.png}
+    \end{center}
+    \caption[Hadoop Distributed File System architecture]{\glsentryfull{HDFS} architecture displaying in different colors basic operations: read (blue), write (green) and Namenode-Datanodes management messages (black). Note: for representation simplicity, files are not segmented into blocks and a single Namenode-Datanode message exchange is pictured. Diagram inspired by the Data-intensive Computing lectures at KTH by Prof. A. H. Payberah. Course website available at \url{https://www.kth.se/student/kurser/kurs/ID2221?l=en}.}
+    \label{fig:hdfs_schema}
+\end{figure}
 
 \subsection{\glsfmtshort{HopsFS}}
 
