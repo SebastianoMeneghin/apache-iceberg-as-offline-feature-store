@@ -122,11 +122,6 @@
 
 \input{lib/defines}  %% load some additional definitions to make writing more consistent
 
-% Set this to suppress "underfull boxes" errors
-\hbadness=99999  % or any number >=10000
-
-\usepackage{booktabs}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                DIVA COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,7 +223,7 @@ morekeywords={begin, todo, textbf, textit, texttt}
 %% note that super will set the descriptions text aligned
 %% note that nomain - does not produce a main glossary, thus only acronyms will be in the glossary
 %% note that nopostdot - will prevent there being a period at the end of each entry
-\usepackage[acronym, style=super, section=section, nonumberlist, nomain,
+\usepackage[acronym, style=super, section=section, nonumberlist, nomain, 
 nopostdot]{glossaries}
 \setlength{\glsdescwidth}{0.75\textwidth}
 \usepackage[automake]{glossaries-extra}
