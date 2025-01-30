@@ -48,6 +48,13 @@
   file = {C\:\\Users\\Sebas\\Zotero\\storage\\FGPTG6RW\\de la Rúa Martínez et al. - 2024 - The Hopsworks Feature Store for Machine Learning.pdf;C\:\\Users\\Sebas\\Zotero\\storage\\ITNYNIV7\\de la Rúa Martínez et al. - 2024 - The Hopsworks Feature Store for Machine Learning.pdf}
 }
 
+@article{afroozehNewFileFormat,
+  title = {Towards a {{New File Format}} for {{Big Data}}: {{SIMD-Friendly Composable Compression}}},
+  author = {Afroozeh, Azim},
+  langid = {english},
+  file = {C:\Users\Sebas\Zotero\storage\UDCHSCDH\Afroozeh - Towards a New File Format for Big Data SIMD-Frien.pdf}
+}
+
 @inproceedings{ahmadBenchmarkingApacheArrow2022,
   title = {Benchmarking {{Apache Arrow Flight}} - {{A}} Wire-Speed Protocol for Data Transfer, Querying and Microservices},
   booktitle = {Benchmarking in the {{Data Center}}: {{Expanding}} to the {{Cloud}}},
@@ -330,6 +337,17 @@
   abstract = {In today's world data is extremely valuable. Companies and researchers store every sort of data, from users activities to medical records. However, data is useless if one cannot extract meaning and insight from it. In 2004 Dean and Ghemawat introduced the MapReduce framework. This sparked the development of open source frameworks for big data storage (HDFS) and processing (Hadoop). Hops and Apache Hive build on top of this heritage. The former proposes a new distributed file system which achieves higher scalability and throughput by storing metadata in a database called MySQL-Cluster. The latter is an open source data warehousing solution built on top of the Hadoop ecosystems, which allows users to query big data stored on HDFS using a SQL-like query language.Apache Hive is a widely used and mature project, however it lacks of consistency between the data stored on the file system and the metadata describing it, stored on a relational database. This means that if users delete Hive's data from the file system, Hive does not delete the related metadata. This causes two issues: (1) users do not get an error if the data is missing from the filesystem (2) if users forget to delete the metadata, it will become orphaned in the database. In this thesis we exploit the fact that both HopsFS' metadata and Hive's metadata is stored in a relational database, to provide a mechanisms to automatically delete Hive's metadata if the data is delete from the file system.The second objective of this thesis is to integrate Apache Hive into the Hops ecosystem and in particular in the HopsWorks platform. HopsWorks is a multitenant, UI based service which allows users to store and process big data projects. In this thesis we develop a custom authenticator for Hive to allow HopsWorks users to authenticate with Hive and to integrate with its security model.},
   school = {KTH, School of Information and Communication Technology (ICT) / KTH, School of Information and Communication Technology (ICT)},
   file = {C:\Users\Sebas\Zotero\storage\2LR5YEK5\Buso - 2017 - SQL on hops.pdf}
+}
+
+@misc{buuckArchitectsGuideOpen2024,
+  title = {The {{Architect}}'s {{Guide}} to {{Open Table Formats}} and {{Object Storage}}},
+  author = {Buuck, Brenna},
+  year = {2024},
+  month = dec,
+  journal = {The New Stack},
+  urldate = {2025-01-30},
+  abstract = {Compare Apache Iceberg, Delta Lake and Apache Hudi and learn how to choose the right open table format for your data lakehouse.},
+  langid = {american}
 }
 
 @misc{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024,
