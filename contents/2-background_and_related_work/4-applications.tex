@@ -1,0 +1,23 @@
+This section describes the application layer, the uppermost layer presented in Figure \ref{fig:datastack}, which takes advantage of the data stack described above. The software described is the Hopsworks feature store, which this project contributes to. This software is part of the broader \gls{MLOps} platform offered by Hopsworks \gls{AB}, the company that hosted this master thesis.
+
+
+\subsection{Machine Learning Operations (MLOps)}
+\label{subsec:back_mlops}
+
+\gls{MLOps} are a full set of practices related to the development and automation of \gls{ML} workflows. Through the \gls{MLOps} lenses, a \gls{ML} workflow is logically separated in smaller steps, and considered from a data, code and model perspective. Differently from a classical software application, where only the code needs versioning, in the context of \gls{ML} applications, it is key that all three of data, code and model are versioned. Indeed, different data might be used by models in different moments, as well as new model might be trained on the same data, to truly understand their improvements.The novel challenges are thus related to data validation, \gls{ML} artifacts versioning, \gls{ML} workflow orchestration, and infrastructure management, given higher computation and storage capabilities needed by those workflows \cite{SurgeAI2024,PDFBigData2024}.
+
+The need of the described features saw new solutions emerging, like the Hopsworks AI data platform \cite{HopsworksRealtimeAI}. In the context of data versioning, the specific solution is called feature store \cite{MeetMichelangeloUbers2017}, which consists in a centralized fast-access storage for both real-time and batch data.
+
+A simple architecture following \gls{MLOps} principle is presented in Figure \ref{fig:mlops_hops}. As first step, data are gathered either streaming (real-time) or batch data sources. A feature pipeline process those the data, performing model-independent transformations \cite{BigDictionaryMLOps2024}, and saves them in the feature store. A training pipeline runs now model-dependent transformations on features and labels retrieved from the feature store, and train the respective model, saving the trained model in the model registry. The last pipeline, the inference pipeline, extract at its need a specific model from the model registry and access the features, over which a inference will be conducted, from the feature store. The output of this pipeline, which normally is embedded directly in the consuming application, are the predictions of the model over the selected features, altogether with logs describing the performance of the model according to a pre-selected measure. All the pipeline are decoupled and could thus work asynchronously, making the whole \gls{ML} workflow scalabile, maintainable and effective.
+
+\begin{figure}[!ht]
+    \begin{center}
+      \includegraphics[width=\textwidth]{figures/2-background_and_related_work/MLOps_hops.png}
+    \end{center}
+    \caption[Feature store in an MLOps pipeline]{\glstext{MLOps} pipeline using a feature store and a model registry. Diagram inspired by Hopsworks documentation available at \url{https://www.hopsworks.ai/dictionary/feature-store}.}
+    \label{fig:mlops_hops}
+\end{figure}
+
+
+\subsection{Hopsworks feature store}
+\label{subsec:back_hopsworks_FS}
