@@ -1565,7 +1565,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="iceberg_read" id="E68G9Hv5mwroiBn2MyhH">
-    <mxGraphModel dx="1050" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2333" dy="1160" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="he58N05iq46Y3Q46A8jA-0" />
         <mxCell id="he58N05iq46Y3Q46A8jA-1" parent="he58N05iq46Y3Q46A8jA-0" />
