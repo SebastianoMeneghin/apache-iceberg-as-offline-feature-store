@@ -2,7 +2,7 @@ This section introduces the concept of data mananagement layer, starting from it
 
 \subsection{Brief history of \glsfmtlongpl{DBMS}}
 \label{subsec:history_DBMS}
-Since the 2010s, with the advent of Big Data, the data volume, variety, and production velocity have increased exponentially \cite{ederUnstructuredData802008, penceWhatBigData2014}. While on one side, this proved to be of enormous value, on the other this posed several challenges \cite{demchenkoAddressingBigData2012} on data architectures, which had to evolve to cope with these new needs. Data lakehouse technologies, like Hudi, Iceberg and Delta Lake \cite{rajaperumalUberEngineeringIncremental2017,IcebergExamples2024,armbrustDeltaLakeHighperformance2020} are the last step of this evolution. However, to truly understand this tools, it is needed to start from the beginning of \gls{DBMS} evolution.
+Since the 2010s, with the advent of Big Data, the data volume, variety, and production velocity have increased exponentially \cite{ederUnstructuredData802008, penceWhatBigData2014}. While on one side, this proved to be of enormous value, on the other this posed several challenges \cite{demchenkoAddressingBigData2012} on data architectures, which had to evolve to cope with these new needs. Data lakehouse frameworks, like Hudi, Iceberg and Delta Lake \cite{rajaperumalUberEngineeringIncremental2017,IcebergExamples2024,armbrustDeltaLakeHighperformance2020} are the last step of this evolution. However, to truly understand this tools, it is needed to start from the beginning of \gls{DBMS} evolution.
 
 \smallskip
 
@@ -24,11 +24,11 @@ Over time, the exponential growth of unstructured data (e.g., images, videos, lo
 
 Table \ref{tab:DBMS_comparison} provides a comparison of data warehouses, data lakes, and data lakehouses, highlighting key takeaways for each technology and summarizing what described so far.
 
-\begin{table}[h!]
+\begin{table}[h]
     \centering
-    \caption[Comparison of Data Technologies]{Comparison of Data Warehouses, Data Lakes, and Data Lakehouses \cite{inmonFiveStepsSuccessful}.}
+    \caption[Comparison of data architectures]{Comparison of key features of Data Warehouses, Data Lakes, and Data Lakehouses \cite{inmonFiveStepsSuccessful}.}
     \label{tab:DBMS_comparison}
-    \begin{tabular}{|p{2.3cm}|p{3.1cm}|p{3.1cm}|p{3.1cm}|}
+    \begin{tabular}{|p{2.2cm}|p{3cm}|p{2.9cm}|p{3cm}|}
         \hline
         \textit{\textbf{Feature}} & \textbf{Data Warehouse} & \textbf{Data Lake} & \textbf{Data Lakehouse} \\
         \hline
@@ -38,7 +38,7 @@ Table \ref{tab:DBMS_comparison} provides a comparison of data warehouses, data l
         \hline
         \textit{Query Performance} & Optimized for SQL-based queries, fast indexed access & Slow for structured queries, requires extensive data preparation & High performance for both SQL and ML workloads \\
         \hline
-        \textit{Schema Enforcement} & Strict schema-on-write & schema-on-read & Flexible schema with enforcement and evolution support \\
+        \textit{Schema Enforcement} & Strict schema-on-write & Schema-on-read & Flexible schema with enforcement and evolution support \\
         \hline
         \textit{\gls{ACID} support} & Fully supported & Not supported & Fully supported \\
         \hline
@@ -72,11 +72,11 @@ Data lakehouse architectures combines the desirable attributes of data warehouse
     \begin{center}
       \includegraphics[width=0.6\textwidth]{figures/2-background_and_related_work/lakehouse_schema.png}
     \end{center}
-    \caption[Architecture of data lakehouse]{Abstraction of architecture of a data lakehouse.}
+    \caption[Architecture of data lakehouse]{Abstraction of architecture of a data lakehouse. Inspired by "Open table formats in perspective" article on OneHouse Website, available at \url{https://www.onehouse.ai/blog/open-table-formats-and-the-open-data-lakehouse-in-perspective}}
     \label{fig:lakehouse_schema}
 \end{figure}
 
-\gls{OTF} are open standards, and by design support interoperability throughout the full stack, as visible in Figure \ref{fig:lakehouse_schema}, \gls{OTF}, different implementation of the same architecture are possible, depending on the integration capabilities of the table format. Thus, once selected an \gls{OTF}, several are the options to choose from for data storage, file formats, storage engine, catalog and query engine.
+\gls{OTF} are open standards, and by design support interoperability throughout the stack, as visible in Figure \ref{fig:lakehouse_schema}. Thus, depending on the integration capabilities of the table format, there are several implementation options for data storage, file formats, storage engine, catalog and query engine. Additionally, recent introduction of tools like Apache XTable~\footnote{XTable repository available at \url{https://xtable.apache.org/}} demonstrates the trend towards a universal compatibility between \glspl{OTF}.
 
 
 \subsubsection*{Open Table Formats}
@@ -88,9 +88,9 @@ Data lakehouse architectures combines the desirable attributes of data warehouse
 \subsection{Data lakehouse comparison}
 \label{subsec:datalakehouse_comparison}
 
-The three main data lakehouse frameworks investigated in this project are Hudi \cite{rajaperumalUberEngineeringIncremental2017}, Iceberg \cite{IcebergExamples2024} and Delta Lake \cite{armbrustDeltaLakeHighperformance2020}. Their popularity has increased proportionally with the popularity of the data lakehouse architecture, as visible by the growing community of each of these technologies in Figure \ref{fig:github_stars}, becoming the de-facto standards for data lakehouse implementations \cite{jainAnalyzingComparingLakehouse2023}. Some alternatives are newly being developed, such Apache Paimon~\footnote{GitHub repository available at \url{https://github.com/apache/paimon/}.}, but are still at early stages of their development and will not investigated in this thesis project. The following subsections present each of these technologies, describing their specific features, integrations and limitations. A comparative overview is presented in Table \ref{tab:lakehouse_comparison}.
+The three main data lakehouse frameworks investigated in this project are Hudi \cite{rajaperumalUberEngineeringIncremental2017}, Iceberg \cite{IcebergExamples2024} and Delta Lake \cite{armbrustDeltaLakeHighperformance2020}. Their popularity has increased proportionally with the popularity of the data lakehouse architecture, as visible by the growing community of each of these technologies in Figure \ref{fig:github_stars}, becoming the de-facto standards for data lakehouse implementations \cite{jainAnalyzingComparingLakehouse2023}. Some alternatives are newly being developed, such Apache Paimon~\footnote{GitHub repository available at \url{https://github.com/apache/paimon/}.}, but are still at early stages of their development and will not investigated in this thesis project. The following subsections present each of these technologies, describing their specific features, integrations and limitations.
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -107,24 +107,6 @@ The three main data lakehouse frameworks investigated in this project are Hudi \
             width=0.9\textwidth,
             height=0.55\textwidth,
         ] 
-        \addplot[color=blue] coordinates {
-            (2018, 0)
-            (2020, 840)
-            (2021, 1320)
-            (2021.5, 1770)
-            (2022, 2220)
-            (2022.33, 2670)
-            (2022.66, 3120)
-            (2023, 3600)
-            (2023.25, 4050)
-            (2023.50, 4500)
-            (2023.75, 4950)
-            (2024, 5400)
-            (2024.33, 5880)
-            (2024.66, 6330)
-            (2025, 6780)
-        };
-        \addlegendentry{apache/iceberg}
         \addplot[color=yellow] coordinates {
             (2016, 0)
             (2019, 690)
@@ -143,6 +125,24 @@ The three main data lakehouse frameworks investigated in this project are Hudi \
             (2025, 5580)
         };
         \addlegendentry{apache/hudi}
+        \addplot[color=blue] coordinates {
+            (2018, 0)
+            (2020, 840)
+            (2021, 1320)
+            (2021.5, 1770)
+            (2022, 2220)
+            (2022.33, 2670)
+            (2022.66, 3120)
+            (2023, 3600)
+            (2023.25, 4050)
+            (2023.50, 4500)
+            (2023.75, 4950)
+            (2024, 5400)
+            (2024.33, 5880)
+            (2024.66, 6330)
+            (2025, 6780)
+        };
+        \addlegendentry{apache/iceberg}
         \addplot[color=red] coordinates {
             (2020, 0)
             (2021, 270)
@@ -168,12 +168,94 @@ The three main data lakehouse frameworks investigated in this project are Hudi \
 \end{figure}
 
 \subsubsection*{Apache Hudi}
+Apache Hudi, open-sourced by Uber in 2017 \cite{rajaperumalUberEngineeringIncremental2017}, is an open-source framework that addresses the challenges of low-latency data ingestion and incremental processing. Hudi enables efficient record updates and deletions in data lakes, thus eliminating the need to rewrite entire datasets \cite{hudi_tech_docs}. The framework supports \gls{CDC} for efficient updates and deletes. Hudi offers two primary write optimization modes: \gls{CoW} for high read performance and \gls{MoR} for balancing both write and read performance. 
+
+Hudi's metadata layer is structured around a timeline-based architecture, maintaining a history of all table operations, thus providing version control. The commit timeline records actions such as inserts, updates, deletes, and compactions, enabling time travel by referencing specific commit instants. The metadata table optimizes file listing by indexing data files, partitions, and record locations, improving query performance. Hudi also maintains delta logs (\gls{MoR}) to track incremental changes before they are compacted into columnar storage. The file groups and file slices structure organizes base and log files, ensuring efficient data versioning. 
+
+Hudi is optimized for real-time analytics through low-latency streaming ingestion, and integrates seamlessly with Spark and Flink for data ingestion and processing. Hudi also supports reading data from Hive, Impala, and Presto. The framework incorporates multimodal indexing, such as Bloom filters and record-level indexing, and employs both Multi-Version \gls{CC} and Optimistic \gls{CC} for transaction management. Typical use cases for Hudi include streaming ingestion with frequent updates and deletes, incremental data processing, and real-time updates in domains like IoT, fintech, and log data processing \cite{comparison1_LakeFS}. While Hudi excels in real-time ingestion, its metadata overhead can be significant for large-scale analytical queries, potentially resulting in slower query performance compared to other formats like Iceberg and Delta Lake \cite{comparison4_starburst}.
+
+Hudi's core implementation is in Java, and it integrates deeply with Apache Spark, offering a Spark datasource \gls{API} for reading and writing Hudi tables.  This makes Java and Scala the primary languages for Hudi development and usage.  While a standalone Python \gls{SDK} for Hudi doesn't exist, Python users can still interact with Hudi tables through PySpark, leveraging the Spark \gls{API}.  Although community-driven efforts like hudi-rs~\footnote{hudi-rs repository available at \url{https://github.com/apache/hudi-rs}.}, a native Rust implementation with Python bindings, are emerging, offering read support for some technologies, Hudi is currently still \gls{JVM}-centric.
+
+
+
 \subsubsection*{Apache Iceberg}
+Apache Iceberg, open-sourced by Netflix in 2018 \cite{IcebergExamples2024}, is an open-source framework that addresses the limitations of Hive tables by emphasizing scalability and correctness for large-scale analytics. By separating metadata from data, Iceberg supports efficient snapshot-based isolation and query planning \cite{shiranApacheIcebergDefinitive2024,iceberg_tech_docs}. The framework provides full \gls{ACID} transactions, ensuring atomicity, consistency, isolation, and durability. Iceberg allows for schema evolution, enabling the addition, removal, and renaming of columns, without breaking existing queries. It also supports partition evolution, allowing changes to partitioning schemes without necessitating data rewrites. 
+
+Iceberg's metadata layer consists of multiple components that enable efficient time travel and point-in-time query planning. The manifest list acts as an index, pointing to multiple manifest files, each of which tracks a subset of data files. These manifest files store information about data file locations, partitioning, and statistics (e.g., min/max values). The snapshot metadata records changes over time, referencing manifest lists and enabling time travel by tracking table versions. Iceberg also maintains a table metadata file, which holds high-level properties, schema, partitioning details, and references to the latest snapshot. 
+
+Iceberg is designed to scale to petabyte-scale datasets with optimized metadata management using manifest files. Its architecture enables data warehouse-like functionality, leveraging cloud object storage for efficient data access. Furthermore, Iceberg supports collaboration across multiple applications with transactionally consistent access. The framework integrates with query engines like Spark, Trino, Presto, and Dremio and supports Flink for both reading and writing. Iceberg excels in read performance, particularly for tables with large numbers of partitions \cite{comparison1_LakeFS}. It is ideal for analytical workloads that involve large-scale datasets and frequent schema or partition evolution. However, Iceberg's write performance may not be as optimized for streaming scenarios compared to other formats.
+
+Iceberg's core is written in Java, and it is heavily integrated with Apache Spark \cite{IcebergNewHadoop,iceberg_tech_docs}.  The most common way to interact with Iceberg is through SparkSQL or other query engines like Trino and Presto, which support Iceberg natively, making Java and Scala the dominant languages in these environments.  However, Iceberg offers more than just Spark bindings. PyIceberg \cite{PyIceberg} provides a direct Python interface for read and -- from release 0.6.0 in 2024 -- write operations, making Iceberg accessible to Python developers without requiring PySpark.  Furthermore, query engines like Trino, accessible from Python via libraries like PyHive, allow Python users to query Iceberg tables through SQL. Iceberg community has recently developed a Rust implementation, iceberg-rust~\footnote{iceberg-rust available at \url{https://github.com/apache/iceberg-rust}.}, which provides read access to Iceberg tables, further expanding its accessibility to a wider range of language ecosystems.
+
+
+
 \subsubsection*{Delta Lake}
+Delta Lake, open-sourced by Databricks in 2019 \cite{armbrustDeltaLakeHighperformance2020}, is an open-source framework that enhances the reliability and performance of data lakes, facilitating a seamless transition between batch and streaming use cases. Often considered the first data lakehouse, Delta Lake employs a transaction log to record all changes to data, ensuring consistent views and write isolation, which supports concurrent data operations \cite{deltalake_tech_docs}. The framework offers \gls{ACID} transactions, as well as features such as unified batch and streaming processing, indexing, and schema enforcement.
+
+Delta Lake's metadata layer is built around the Delta Log, which records every transaction in JSON files, enabling time travel. The transaction log maintains a sequential history of operations, while checkpoint files (stored in Parquet format) periodically summarize log entries for faster metadata access. The protocol metadata defines the table's versioning, schema, and supported features, ensuring compatibility across different readers and writers. It also incorporates metadata-informed data skipping during merge operations and supports streaming through change data feeds.
+
+Delta Lake tighlty integrates with Spark, thus it is particularly well-suited for real-time streaming, batch processing, and \gls{ML} pipelines requiring data versioning. While its open-source adoption continues to grow, Delta Lake remains deeply integrated with the Databricks ecosystem \cite{jainAnalyzingComparingLakehouse2023,comparison2_medium_recent}. Additionally, its focus on schema and partition evolution is less pronounced compared to frameworks like Iceberg, making Delta Lake less suitable for situations where data schemas are frequently changing.
+
+Delta Lake  core is written in Java and Scala \cite{deltalake_tech_docs}, providing native support within the Spark ecosystem through the delta package. This allows Java and Scala developers to interact directly with Delta tables. Python support is provided via PySpark, enabling Python developers to leverage the Spark \gls{API} for Delta Lake operations.  However, Delta Lake's reach extends beyond the \gls{JVM}.  With the release of Delta Kernel \cite{AnnouncingDeltaLake2023}, a Java library providing low-level access, and the development of delta-rs~\footnote{delta-rs repository available at \url{https://github.com/delta-io/delta-rs}.}, a Rust-based implementation, Delta Lake has become accessible to a wider audience.  The library delta-rs allows interaction with Delta tables without Spark or \gls{JVM} dependencies, and its Python bindings makes this particularly attractive to the Python data science community.
 
 
 
+\medspace
+In Table \ref{table:lakehouse_comparison} is presented a comparation between key features of the three data lakehouse frameworks.
 
-Delta Lake is the technology that will be most used in this project. A Delta Lake Table (i.e., an instance of Delta Lake) operates on a data lake containing Parquet files and a transaction log. The transaction log records each operation, enabling versioning and recovery of previous versions (also called time travel). The data lake can be partitioned, e.g., using a date field, making the Delta Lake table look like Figure \ref{fig:delta_table}
 
 
+\begin{table}[h]
+    \centering
+    \caption[Comparison of data lakehouses]{Comparison of key features of Apache Hudi, Apache Iceberg, Delta Lake \cite{hudi_tech_docs,iceberg_tech_docs,deltalake_tech_docs}.}
+    \label{table:lakehouse_comparison}
+    \begin{tabular}{|p{2.6cm}|p{3.2cm}|p{2.4cm}|p{3cm}|}
+    \hline
+    \textit{\textbf{Feature}} & \textbf{Apache Hudi} & \textbf{Apache Iceberg} & \textbf{Delta Lake} \\
+    \hline
+    \begin{tabular}[t]{@{}l@{}} \textit{Metadata} \\ \textit{Implementation} 
+    \end{tabular} & Tabular & Hierarchical & Tabular \\
+    \hline
+    \textit{Time Travel} & via snapshots & via transaction log & via incremental commits \\
+    \hline
+    \textit{Caching} & No & Yes & Yes \\
+    \hline
+    \textit{Optimization} & \gls{CoW}, \gls{MoR} & \gls{CoW}, \gls{MoR} & \gls{CoW} \\
+    \hline
+    \begin{tabular}[t]{@{}l@{}} \textit{Schema} \\ \textit{Evolution} 
+    \end{tabular} & Limited & Full & Partial \\
+    \hline
+    \begin{tabular}[t]{@{}l@{}} \textit{Partition} \\ \textit{Evolution} 
+    \end{tabular} & Explicit & Hidden & Explicit \\
+    \hline
+    \begin{tabular}[t]{@{}l@{}} \textit{Concurrency} \\ \textit{Control} 
+    \end{tabular} & Optimistic, Multi-version & Optimistic & Optimistic \\
+    \hline
+    \textit{Storage Engines} & \multicolumn{3}{c|}{\gls{HDFS}, \gls{AWS} S3, \gls{GCS}, Azure Blob Storage} \\
+    \hline
+    \textit{File Formats} & 
+        \begin{tabular}[t]{@{}l@{}} Parquet \\ Avro \\ ORC
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Parquet \\ Avro \\ ORC 
+        \end{tabular} & Parquet \\
+    \hline
+    \textit{Catalogs} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \end{tabular} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Snowflake \\ JDBC \\ Nessie \\ REST \end{tabular} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Unity \end{tabular} \\
+    \hline
+    \textit{Query Engines} & 
+        \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Hive \\ Impala \\ Presto 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Spark \\ Trino \\ Presto \\ Dremio \\ Flink \\ Athena \\ Snowflake 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Spark \\ Presto \\ Athena \\ Redshift \\ Snowflake 
+        \end{tabular} \\
+    \hline
+    \textit{\glspl{API}} & 
+        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Scala (Spark,Flink) \\ Python (Spark) \\ Rust 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python \\ Rust 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Scala (Spark) \\ Java (Spark,Flink) \\ Python (Spark) \\ Rust 
+        \end{tabular} \\
+    \hline
+    \end{tabular}
+    \end{table}
