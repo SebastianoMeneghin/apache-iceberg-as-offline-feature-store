@@ -19,5 +19,10 @@ A simple architecture following \gls{MLOps} principle is presented in Figure \re
 \end{figure}
 
 
-\subsection{Hopsworks feature store}
+\subsection{Hopsworks AI Data Platform}
 \label{subsec:back_hopsworks_FS}
+As briefly said above, the feature Store is a key data layer in an \gls{ML} application built over the \gls{MLOps} principles. The feature store enables feature reusability, as well as multi-user collaboration and a centralized authenticated access to the feature. The Hopsworks feature store organizes features in feature groups. Those are mutable collection of features, over which developers can perform \gls{CRUD} operations, accessing them via the Hopsworks \glspl{API}.
+
+The Hopsworks feature store supports both batch data sources and real-time data streaming. This hybrid system is possible thanks to the dual implementation of an offline and an offline feature store. The offline feature store is a column-based storage suited for batch data that is updated with a low frequency (every few hours at maximum frequency). The online feature store, on the other hand, is a real-time row-based, key-value data storage based on RonDB, thus enabling low latency and real-time processing. To maintain consistentency between those two stacks, the Hopsworks feature store has a unique point of entry for data, which is Kafka, explained in detail in \ref{subsec:back_apache_kafka}. This guarantess that each message is delivered to both storages, which acts are consumers subscribed to the Kafka topics.
+
+The model registry works under the same principles of the feature store, proving a centralized access and a standard deployment for all the models saved in it. It also saves information about model performance along time, model schemas and training feature logs, to ease model reproducibility and tracking.
