@@ -20,11 +20,9 @@ To address the increasing demand for analytical queries, more advanced \glspl{DB
 
 \smallskip
 
-Over time, the exponential growth of unstructured data (e.g., images, videos, logs, and sensor data), posed new challenges for companies aiming to leverage such information. Traditional data warehouses struggled to accommodate this data due to their rigid schema requirements and high storage costs. Moreover, they were not designed to support \gls{AI}/\gls{ML} workflows that rely on diverse, unstructured datasets. To overcome these limitations, organizations adopted a new paradigm known as data lakes. Data lakes leverage cost-efficient object storage (Section~\ref{subsec:block_vs_file_vs_object}) and a schema-on-read approach, where raw data is loaded first and transformed only when needed. This shift from the traditional \gls{ETL} model to \gls{ELT} offers greater flexibility in handling diverse data types. For example, businesses can use data lakes to store raw IoT sensor readings and later refine them for predictive maintenance models, once the needed data transformation will be designed. Despite reducing storage costs and improving flexibility, data lakes introduced new complexities. Unlike structured databases, querying data lakes directly for \gls{BI} reports is impractical, as they lack indexing and transactional consistency. Additionally, maintaining separate storage solutions for structured (data warehouses) and unstructured (data lakes) data increases operational complexity and costs. A major drawback of data lakes is the risk of becoming "data swamps", repositories filled with ungoverned, low-quality data that provide little business value. Recognizing these challenges, organizations sought a hybrid solution combining the best features of data warehouses and data lakes. This led to the emergence of the data lakehouse architecture. First described by Databricks in 2020 at \gls{CIDR} \cite{lakehouse2021}, data lakehouses integrate structured and unstructured data storage capabilities of data lakes, while maintaining the governance, \gls{ACID} compliance, and indexing capabilities of data warehouses. The data lakehouse approach resolves many pain points associated with separate data warehouses and data lakes. It enables organizations to use a single storage for all types of data, while supporting high-performance \gls{SQL} queries and \gls{ML} workloads. Furthermore, by leveraging open file formats like Apache Parquet, ORC and Avro, data lakehouses ensure interoperability with various analytics engines, avoiding the risk of getting data locked into a proprietary format \cite{mazumdarDataLakehouseData2023}. All these capabilities and features make lakehouses an ideal solution for enterprise-scale data processing. 
+Over time, the exponential growth of unstructured data (e.g., images, videos, logs, and sensor data), posed new challenges for companies aiming to leverage such information. Traditional data warehouses struggled to accommodate this data due to their rigid schema requirements and high storage costs. Moreover, they were not designed to support \gls{AI}/\gls{ML} workflows that rely on diverse, unstructured datasets. To overcome these limitations, organizations adopted a new paradigm known as data lakes. Data lakes leverage cost-efficient object storage (Section~\ref{subsec:block_vs_file_vs_object}) and a schema-on-read approach, where raw data is loaded first and transformed only when needed. This shift from the traditional \gls{ETL} model to \gls{ELT} offers greater flexibility in handling diverse data types. For example, businesses can use data lakes to store raw IoT sensor readings and later refine them for predictive maintenance models, once the needed data transformation will be designed. Despite reducing storage costs and improving flexibility, data lakes introduced new complexities. Unlike structured databases, querying data lakes directly for \gls{BI} reports is impractical, as they lack indexing and transactional consistency. Additionally, maintaining separate storage solutions for structured (data warehouses) and unstructured (data lakes) data increases operational complexity and costs. A major drawback of data lakes is the risk of becoming "data swamps", repositories filled with ungoverned, low-quality data that provide little business value. Recognizing these challenges, organizations sought a hybrid solution combining the best features of data warehouses and data lakes. This led to the emergence of the data lakehouse architecture. First described by Databricks in 2020 at \gls{CIDR} \cite{lakehouse2021}, data lakehouses integrate structured and unstructured data storage capabilities of data lakes, while maintaining the governance, \gls{ACID} compliance, and indexing capabilities of data warehouses. The data lakehouse approach resolves many pain points associated with separate data warehouses and data lakes. It enables organizations to use a single storage for all types of data, while supporting high-performance \gls{SQL} queries and \gls{ML} workloads. Furthermore, by leveraging open file formats like Apache Parquet, ORC and Avro, data lakehouses ensure interoperability with various analytics engines, avoiding the risk of getting data locked into a proprietary format \cite{mazumdarDataLakehouseData2023}. All these capabilities and features make lakehouses an ideal solution for enterprise-scale data processing. Table \ref{tab:DBMS_comparison} provides a comparison of data warehouses, data lakes, and data lakehouses, highlighting key takeaways for each technology and summarizing what described so far.
 
-Table \ref{tab:DBMS_comparison} provides a comparison of data warehouses, data lakes, and data lakehouses, highlighting key takeaways for each technology and summarizing what described so far.
-
-\begin{table}[h]
+\begin{table}[!h]
     \centering
     \caption[Comparison of data architectures]{Comparison of key features of Data Warehouses, Data Lakes, and Data Lakehouses \cite{inmonFiveStepsSuccessful}.}
     \label{tab:DBMS_comparison}
@@ -205,7 +203,7 @@ In Table \ref{table:lakehouse_comparison} is presented a comparation between key
 
 
 
-\begin{table}[h]
+\begin{table}[!h]
     \centering
     \caption[Comparison of data lakehouses]{Comparison of key features of Apache Hudi, Apache Iceberg, Delta Lake \cite{hudi_tech_docs,iceberg_tech_docs,deltalake_tech_docs}.}
     \label{table:lakehouse_comparison}
@@ -216,7 +214,7 @@ In Table \ref{table:lakehouse_comparison} is presented a comparation between key
     \begin{tabular}[t]{@{}l@{}} \textit{Metadata} \\ \textit{Implementation} 
     \end{tabular} & Tabular & Hierarchical & Tabular \\
     \hline
-    \textit{Time Travel} & via snapshots & via transaction log & via incremental commits \\
+    \textit{Time Travel} & snapshots & transaction log & incremental commits \\
     \hline
     \textit{Caching} & No & Yes & Yes \\
     \hline
@@ -239,22 +237,28 @@ In Table \ref{table:lakehouse_comparison} is presented a comparation between key
         \begin{tabular}[t]{@{}l@{}} Parquet \\ Avro \\ ORC 
         \end{tabular} & Parquet \\
     \hline
-    \textit{Catalogs} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \end{tabular} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Snowflake \\ JDBC \\ Nessie \\ REST \end{tabular} & \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Unity \end{tabular} \\
+    \textit{Catalogs} & 
+        \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ JDBC \\ REST 
+        \end{tabular} & 
+        \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Unity 
+        \end{tabular} \\
     \hline
     \textit{Query Engines} & 
-        \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Hive \\ Impala \\ Presto 
+        \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Presto \\ Hive \\ Impala
         \end{tabular} & 
-        \begin{tabular}[t]{@{}l@{}} Spark \\ Trino \\ Presto \\ Dremio \\ Flink \\ Athena \\ Snowflake 
+        \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Presto \\ Trino  Athena \\ Snowflake 
         \end{tabular} & 
         \begin{tabular}[t]{@{}l@{}} Spark \\ Presto \\ Athena \\ Redshift \\ Snowflake 
         \end{tabular} \\
     \hline
     \textit{\glspl{API}} & 
-        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Scala (Spark,Flink) \\ Python (Spark) \\ Rust 
+        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python (Spark) \\ Rust \\ Scala (Spark,Flink)
         \end{tabular} & 
-        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python \\ Rust 
+        \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python \\ Rust
         \end{tabular} & 
-        \begin{tabular}[t]{@{}l@{}} Scala (Spark) \\ Java (Spark,Flink) \\ Python (Spark) \\ Rust 
+        \begin{tabular}[t]{@{}l@{}} Java (Spark,Flink) \\ Python (Spark) \\ Rust \\ Scala (Spark)
         \end{tabular} \\
     \hline
     \end{tabular}
