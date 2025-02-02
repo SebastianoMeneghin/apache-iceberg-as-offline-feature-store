@@ -1,4 +1,4 @@
-This Section explains the method and principles used for the software integration process between PyIceberg and \gls{HopsFS}. This Section is divided into three Subsections: Integration process, describing the activities to be conducted to integrate PyIceberg and \gls{HDFS}; Requirements; and Development environment, detailing the tools and resources that will be used during the integration process.
+This Section explains the method and principles used for the system integration process, between PyIceberg and \gls{HopsFS}. This Section is divided into three Subsections: Integration process, describing the activities to be conducted to integrate PyIceberg and \gls{HDFS}; Requirements; and Development environment, detailing the tools and resources that will be used during the integration process.
 
 
 %%%%%  INTEGRATION PROCESS
@@ -8,7 +8,7 @@ The integration development process will follow an iterative in Figure \ref{fig:
 
 \begin{enumerate}
     \item \textbf{Set requirements collaboratively}: this activity is key for the completion of \gls{G}~1-2, as it is an initial system analysis, performed together with the industrial supervisors, who are knowledgeable on Hopsworks' infrastructure. This task sets the project requirements and investigates what needs to be integrated at a high-level abstraction.
-    \item \textbf{Analyse system and tools}: this activity solves \gls{G}~1 performing low-level code analysis on system and PyIceberg function calls, understanding what needs to be developed to integrate \gls{HopsFS} and PyIceberg. This activity is the first of an iterative loop accounting for the requirements fulfillment.
+    \item \textbf{Analyze system and tools}: this activity solves \gls{G}~1 performing low-level code analysis on system and PyIceberg function calls, understanding what needs to be developed to integrate \gls{HopsFS} and PyIceberg. This activity is the first of an iterative loop accounting for the requirements fulfillment.
     \item \textbf{Develop integration}: this activity partially \gls{G}~2, designing and developing a code solution from the information gathered during the analyses above.
     \item \textbf{Test integration}: this activity partially solves \gls{G}~2, verifying the solution validity with integration tests. Failed integration tests or unfulfilled requirements will triggen a new loop iteration. Otherwise, the integretion process will be concluded.
 \end{enumerate}
@@ -18,7 +18,7 @@ This process will produce a part of \gls{D}~3, which is the code implementation 
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=0.8\textwidth]{figures/3-method/method_code.png}
-    \caption[System integration process]{Diagram of the system integration process partially answering \gls{RQ}~1. Each activity is associated to specific \glspl{G}. The process produces part of \gls{D}~3, the integration detail. The loop iterates until the functional requirements (defined in Section \ref{subsec:integration_reqs}) are fulfilled.}
+    \caption[System integration process]{Diagram of the system integration process partially answering \gls{RQ}~1. Each activity is associated to specific \glspl{G}. The process produces the integration detail (\gls{D}~3 partial). The loop iterates until the functional requirements, defined in Section~\ref{subsec:integration_reqs}, are fulfilled.}
     \label{fig:method_code_schema}
     \end{center}
 \end{figure}
