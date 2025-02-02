@@ -17,7 +17,7 @@ This process will produce a part of \gls{D}~3, which is the code implementation 
 
 \begin{figure}[!ht]
     \begin{center}
-      \includegraphics[width=0.6\textwidth]{figures/3-method/method_code.png}
+      \includegraphics[width=0.8\textwidth]{figures/3-method/method_code.png}
     \caption[System integration process]{Diagram of the system integration process partially answering \gls{RQ}~1. Each activity is associated to specific \glspl{G}. The process produces part of \gls{D}~3, the integration detail. The loop iterates until the functional requirements (defined in Section \ref{subsec:integration_reqs}) are fulfilled.}
     \label{fig:method_code_schema}
     \end{center}
@@ -42,8 +42,8 @@ The \textbf{non-functional requirements} are:
 
 %%%%% DEVELOPMENT ENVIRONMENT
 \subsection{Development environment}
-The system implementation will be developed by making use of several technologies, here categorized:
+The system implementation will be developed using the following technologies:
 \begin{itemize}
-    \item \textbf{Computing resources}: the system implementation will be developed in a remote environment (\gls{VM}) accessed via \gls{SSH} from a computer terminal. Local development is discarded, due to low reproducibility and complexity of mounting \gls{HopsFS} on a local machine.
+    \item \textbf{Computing resources}: the system integration will be developed on a \gls{VM} accessed via \gls{SSH} from a computer terminal. Local development will be avoided, due to low reproducibility and complexity of mounting \gls{HopsFS} on a local machine.
     \item \textbf{Code versioning and shared development}: GitHub will be used for versioning and sharing the developed solution.
 \end{itemize}
