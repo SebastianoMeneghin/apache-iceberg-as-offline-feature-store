@@ -26,10 +26,10 @@ This evaluation process will follow a sequential approach described in Figure~\r
 
 Several choices must be made for a system evaluation: which data will be used, which environment will run the experiments, and which metrics will be used to evaluate the system. Those choices depends on the scenarios for which the system is created. Thus, this Subsection describes the typical use case for this system. Follwing, the other Subsections describe which were the decision taken accordingly. While conducting their research in Hopsworks, the author outlined a typical industrial use case for the Hopsworks feature store, by reading internal documentation and discussing with several employees on their customer needs and trends. The use case is described by:
 \begin{itemize}  
-  \item \textbf{Table size}: most of the Hospworks' customers' workloads were limited (from 1M to 100M rows), with only few clients needing support for massive workloads (more than 1BN rows). Thus, this project opted to improve performance for the smaller workloads (from 100K to 100M rows). The datatset selected are presented in Section \ref{subsec:experimental_data}.
+  \item \textbf{Table size}: most of the Hospworks' customers' workloads were limited (from 1M to 100M rows), with only few clients needing support for massive workloads (more than 1BN rows). Thus, this project opted to improve performance for the smaller workloads (from 100k to 100M rows). The datatset selected are presented in Section~\ref{subsec:experimental_data}.
   \item \textbf{Type of data}: the Hopsworks feature store works only with structured data (e.g., numbers, strings), thus experiment design and selected datasets embody this scenario.
   \item \textbf{Rows over storage size}: In the experimental part of this thesis, in order to have a realible unit measures for table size, the number of rows will be over the storage size (bytes). Perhaps, in the structured data domain of this use case, storage size (bytes) is neither linked to a table structure nor to a storage structure, arguably making this not reliable (i.e, table with a lot of rows and few columns, and a table with few ros and a lot of columns occupies the same memory).
-  \item \textbf{Client configuration}: the client configuration is modeled to reflect typical customers' clients' computational and storage capabilities. Thus, the configuration are limited between one and eight \gls{CPU} cores, \gls{RAM} just sufficient for system needs and common \gls{SSD} storages. The experimental environment is further detailed in Section \ref{subsec:experimental_env}.
+  \item \textbf{Client configuration}: the client configuration is modeled to reflect typical customers' clients' computational and storage capabilities. Thus, the configuration are limited between one and eight \gls{CPU} cores, \gls{RAM} just sufficient for system needs and common \gls{SSD} storages. The experimental environment is further detailed in Section~\ref{subsec:experimental_env}.
 \end{itemize}
 
 
@@ -37,6 +37,52 @@ Several choices must be made for a system evaluation: which data will be used, w
 %%%% EXPERIMENTAL DATA %%%%
 \subsection{Experimental data}
 \label{subsec:experimental_data}
+
+The datasets that will be used to perform read and write experiments come from \glsentryshort{TPC}-H benchmark suite~\footnote{Benchmark suite website available at \url{https://www.tpc.org/tpch/}}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}, that consists in a collection of business-oriented queries in specific industry sectors \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}, which became the de-facto standard for experiments on data storage system. Perhaps, it has been used in related studies \cite{raasveldtDuckDBEmbeddableAnalytical2019,behmPhotonFastQuery2022,manfrediReducingReadWrite2024}. 
+
+The \glsentryshort{TPC}-H benchmark contains eight tables, and any part of the data can be generated via the \gls{TPC}-H data generation tool~\footnote{Available at \url{https://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp}}. The two tables that will be used are the SUPPLIER and the LINEITEM, respectively, the smallest (10k rows) and largest (60M rows) tables. The size (number of rows) of a table depends on the \gls{SF}, that can be varied to progressivly change in the table size. The SUPPLIER table has seven columns, while the LINEITEM table has sixteen. This difference influences the average size of memory each row occupies. Below for each table their columns are listed, specifying which data type they store.
+\begin{itemize}
+  \item SUPPLIER
+  \begin{itemize}
+    \item S\_SUPPKEY : identifier
+    \item S\_NAME : fixed text, size 25
+    \item S\_ADDRESS : variable text, size 40
+    \item S\_NATIONKEY : identifier
+    \item S\_PHONE : fixed text, size 15
+    \item S\_ACCTBAL : decimal
+    \item S\_COMMENT : variable text, size 101
+  \end{itemize}
+  \item LINEITEM
+  \begin{itemize}
+    \item L\_ORDERKEY : identifier
+    \item L\_PARTKEY : identifier
+    \item L\_SUPPKEY : identifier
+    \item L\_LINENUMBER : integer
+    \item L\_QUANTITY : decimal
+    \item L\_EXTENDEDPRICE : decimal
+    \item L\_DISCOUNT : decimal
+    \item L\_TAX : decimal
+    \item L\_RETURNFLAG : fixed text, size 1
+    \item L\_LINESTATUS : fixed text, size 1
+    \item L\_SHIPDATE : date
+    \item L\_COMMITDATE : date
+    \item L\_RECEIPTDATE : date
+    \item L\_SHIPINSTRUCT : fixed text, size 25
+    \item L\_SHIPMODE : fixed text, size 10
+    \item L\_COMMENT : variable text, size 44
+  \end{itemize} 
+\end{itemize}
+
+Considering the different structure of the two tables used (i.e., number of columns and data types) comparison across different tables cannot be done using the the selected metrics, i.e., latency (seconds) and throughput(rows/second). For this reason, the system evaluation will only consider same tables on different configuration. This project used five table variations to benchmark the system integration. \gls{SF} was varied to obtain a table at each significant order of magnitude, from 10k rows to 60M rows. These are the tables:
+\begin{enumerate}
+    \item \textit{supplier\_sf1}: size = 10000 rows
+    \item \textit{supplier\_sf10}: size = 100000 rows
+    \item \textit{supplier\_sf100}: size = 1000000 rows
+    \item \textit{lineitem\_sf1}: size = 60000000 rows
+    \item \textit{lineitem\_sf10}: size = 60000000 rows
+\end{enumerate}
+
+Lastly, despite no information are given about the row and storage size (bytes) ratio, in accordance to Section \ref{subsec:method_use_case}, this Section presentes comprehensive information on the data, including how to retrieve it and how it is composed. These gives to the reader the ability of calculating the storage occupancy of each table, depending on their prefered unit of measure.
 
 
 
