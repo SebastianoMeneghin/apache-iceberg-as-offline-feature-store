@@ -15,7 +15,7 @@ The integration development process will follow an iterative in Figure \ref{fig:
 
 This process will produce a part of \gls{D}3, which is the code implementation for PyIceberg and \gls{HopsFS} integration, including the consideration about the specific tools selected or discarded.
 
-\begin{figure}[!ht]
+\begin{figure}[!t]
     \begin{center}
       \includegraphics[width=0.8\textwidth]{figures/3-method/method_code.png}
     \caption[System integration process]{Diagram of the system integration process partially answering \gls{RQ}1. Each activity is associated to specific \glspl{G}. The process produces the integration detail (\gls{D}3 partial). The loop iterates until the functional requirements, defined in Section~\ref{subsec:integration_reqs}, are fulfilled.}
@@ -34,9 +34,9 @@ A series of requirements are defined in agreement with Hopsworks AB, to create a
 \end{enumerate}
 The \textbf{non-functional requirements} are:
 \begin{enumerate}
-    \item \textbf{Consistent}: the solution should be consistent with the current open-source codebase.
-    \item \textbf{Maintainable}: the solution should minimize the need for maintenance and support of the codebase in the future, minimizing changes to open-source code.
-    \item \textbf{Scalable}: the solution should handle read or write operations on Iceberg Tables, up to 100 GB, to support small-scale dataset scenarios.
+    \item \textbf{Consistency}: the solution should be consistent with the current open-source codebase.
+    \item \textbf{Maintainability}: the solution should minimize the need for maintenance and support.
+    \item \textbf{Scalability}: the solution should handle read or write operations on Iceberg Tables, up to 100 GB, to support small-scale dataset scenarios.
 \end{enumerate}
 
 
