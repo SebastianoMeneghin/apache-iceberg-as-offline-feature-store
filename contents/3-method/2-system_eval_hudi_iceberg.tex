@@ -13,7 +13,7 @@ This evaluation process will follow a sequential approach described in Figure~\r
 \end{enumerate}
 \begin{figure}[!ht]
     \begin{center}
-    \includegraphics[width=0.8\textwidth]{figures/3-method/method_exp.png}
+    \includegraphics[width=0.7\textwidth]{figures/3-method/method_exp.png}
     \caption[System evaluation process - Hudi vs. Iceberg]{Diagram of the system evaluation process partially answering \gls{RQ}1. Each activity is associated to specific \gls{G}. The process produces two \glspl{D}, the experiments results (\gls{D}1) and a results analysis (\gls{D}3-partial).}
     \label{fig:method_experiments}
     \end{center}
@@ -26,9 +26,9 @@ This evaluation process will follow a sequential approach described in Figure~\r
 
 Several choices must be made for a system evaluation: which data will be used, which environment will run the experiments, and which metrics will be used to evaluate the system. Those choices depends on the scenarios for which the system is created. Thus, this Subsection describes the typical use case for this system. Follwing, the other Subsections describe which were the decision taken accordingly. While conducting their research in Hopsworks, the author outlined a typical industrial use case for the Hopsworks feature store, by reading internal documentation and discussing with several employees on their customer needs and trends. The use case is described by:
 \begin{itemize}  
-  \item \textbf{Table size}: most of the Hospworks' customers' workloads were limited (from 1M to 100M rows), with only few clients needing support for massive workloads (more than 1BN rows). Thus, this project opted to improve performance for the smaller workloads (from 100k to 100M rows). The datatset selected are presented in Section~\ref{subsec:experimental_data}.
+  \item \textbf{Table size}: most of the Hospworks' customers' workloads were limited (from 1M to 100M rows), with only few clients needing support for massive workloads (more than 1B rows). Thus, this project opted to improve performance for the smaller workloads (from 100k to 100M rows). The datatset selected are presented in Section~\ref{subsec:experimental_data}.
   \item \textbf{Type of data}: the Hopsworks feature store works only with structured data (e.g., numbers, strings), thus experiment design and selected datasets embody this scenario.
-  \item \textbf{Rows over storage size}: In the experimental part of this thesis, in order to have a realible unit measures for table size, the number of rows will be over the storage size (bytes). Perhaps, in the structured data domain of this use case, storage size (bytes) is neither linked to a table structure nor to a storage structure, arguably making this not reliable (i.e, table with a lot of rows and few columns, and a table with few ros and a lot of columns occupies the same memory).
+  \item \textbf{Rows over storage size}: In the experimental part of this thesis, in order to have a reliable unit measure for table size, the number of rows will be over the storage size (bytes). Perhaps, in the structured data domain of this use case, storage size (bytes) is neither linked to a table structure nor to a storage structure, arguably making this unit measure not reliable (i.e, table with a lot of rows and few columns, and a table with few ros and a lot of columns occupies the same memory).
   \item \textbf{Client configuration}: the client configuration is modeled to reflect typical customers' clients' computational and storage capabilities. Thus, the configuration are limited between one and eight \gls{CPU} cores, \gls{RAM} just sufficient for system needs and common \gls{SSD} storages. The experimental environment is further detailed in Section~\ref{subsec:experimental_env}.
 \end{itemize}
 
@@ -144,13 +144,13 @@ Caches (sum of all):
 
 %%%% EVALUATION FRAMEWORK
 \subsection{Evaluation framework}
-\label{subsec:method_eval_framework}
+\label{subsec:method_eval_framework_hudi_iceberg}
 
 The system evaluation framework will evaluate the different system on three key aspects:
 \begin{enumerate}
     \item \textbf{Functional requirements}: will be measured by verifying the success or failure of running an experiment. This will not happen by design, since the system integration phase stops only when all functional requirements are met. Those are escribed in Section \ref{subsec:integration_reqs}:
     \item \textbf{Non-functional requirements}: Consistency and maintainability are mainly addressed during integration, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput, as defined in \gls{RQ}1.
-    \item \textbf{How does the legacy system compare to PyIceberg pipelines?} this question answers directly \gls{RQ}1, measuring the throughput of the pipelines defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
+    \item \textbf{How does the legacy pipeline compare to the PyIceberg pipeline?} this question answers directly \gls{RQ}1, measuring the throughput of the pipelines defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
 
 
