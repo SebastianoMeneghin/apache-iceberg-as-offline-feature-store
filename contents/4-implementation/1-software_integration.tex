@@ -1,0 +1,29 @@
+The first step of the system integration process consisted of analyzing the Hopsworks system and the PyIceberg tools, as described in Section \ref{sec:system_integration}. This permitted to identify which parts had to be integrated to satisfy the requirements, thus to be able to read and write on Iceberg Table hosted on \gls{HopsFS}, via the PyIceberg library. This step outlined the need of a catalog, a query engine, and a FileIO. While the formers are fundamental components of any Data lakehouse architecture explained in Section \ref{subsec:datalakehouse_architecture}, the latter is a pluggable module for performing \gls{CRUD} operations on files, specifically required by PyIceberg.
+
+PyIceberg, being a rather recently developed library, does not provides yet all the features integrations of older Iceberg libraries \cite{iceberg_tech_docs}, such the Java \gls{API}. In addition, despite \gls{HopsFS} expose the same methods of \gls{HDFS}, the environment where HopsFS was mounted, described in Section \ref{subsec:experimental_env}, did not allow to use some catalogs. Sections \ref{subsec:integration_catalog_choice}-\ref{subsec:integration_engine_choice} describe the choices taken for both catalog (SQL Catalog) and query engine (DuckDB), describing the reason behind those choices and the problem encountered. Regarding the FileIO, since there was a single compatible option (PyArrowFileIO), this component could not be subject of any design comparison. Lastly, Section \ref{subsec:integration_usage} describe how instanciate the integrated system, and how to perform operations over it.
+
+\subsection{Catalog choice}
+\label{subsec:integration_catalog_choice}
+At time of development, the available catalogs were:
+\begin{itemize}
+    \item \textbf{REST}: it is supported by \gls{HopsFS}. However, since this would have need to develop the interface from scratch, thus was discarded as not fulfilling the maintainability not-functional requirement, described in Section \ref{subsec:integration_reqs}.
+    \item \textbf{\gls{AWS} Glue}: it is supported by \gls{HDFS}, but it did not pass the integration test with \gls{HopsFS}, thus was discared. Additionally, since it is a proprietary solution of \gls{AWS}, this would have lowered the reproducibility of the experiments later conducted, due to the additional costs of this solution.
+    \item \textbf{\gls{AWS} DynamoDB}: it is supported by \gls{HopsFS}. Was however discarded, for the same reproducibility reason explained above.
+    \item \textbf{\gls{HMS}}: it is supported by \gls{HopsFS}. \gls{HMS} is however a complex tool, developed to be tightly integrated with MapReduce and Spark environment, and perhaps perform its best in large-scale data scenarios. This was discared since not matching with the functional requirements of avoiding Spark, and the industrial use case described in Section \ref{subsec:method_use_case}. Furthermore, this did not fulfill the maintainability not-functional requirement.
+    \item \textbf{SQL Catalog}: it is supported by \gls{HopsFS}, and it could be instanciated on a SQLite database supported by PyIceberg. This was the choice for the system integration, as it is an open-source catalog, the most light-weight option among the alternatives, and needs few lines of code to be used, fulfilling both the not-functional and the functional requirements. This solution suits perfectly small-scale scenarios such this thesis' use case, but it does not fit a large-scale scenario. Furthemore, the specific SQLite database is not built for concurrency.
+\end{itemize}
+
+\subsection{Query engine choice}
+\label{subsec:integration_engine_choice}
+In the choice of the query engine, all the candidates are known to be suitable for both \gls{HopsFS}, since this all of these engines are supported by Hopsworks AI Data Platoform, which uses HopsFS are data storage layer. At time of development, the available query engines were:
+\begin{itemize}
+    \item \textbf{\gls{AWS} Athena and Snowflake}: both were discarded since they are proprietary solutions. This would have lowered the reproducibility of the experiments later conducted, due to the additional costs of this solution.
+    \item \textbf{Spark}: this was discarded since it direclty violates the requirerments and purpose of this project, i.e. create a Spark alternative to read and write data on \gls{OTF} stored on \gls{HopsFS}.
+    \item \textbf{Presto, Trino, Flink}: were discarded as designed to perform their best in large-scale data scenarios, thus it did not suit the  industrial use case described in Section \ref{subsec:method_use_case}. Additionally, it did not fulfill the maintainability not-functional requirement, describe in Section \ref{subsec:integration_reqs}.
+    \item \textbf{DuckDB}: was the chioce for the system integration, as it is a portable open-source \gls{OLAP}-\gls{DBMS}, which proved to be the best performing engine in related work on small-scale scenarios \cite{raasveldtDuckDBEmbeddableAnalytical2019,Khazanchi1801362}.
+\end{itemize}
+
+
+\subsection{Integration usage}
+\label{subsec:integration_usage}
+
