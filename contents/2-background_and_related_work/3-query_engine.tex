@@ -28,7 +28,7 @@ Made clarity over the catalog definition regarding this project, there are sever
 
 Data lakehouse technologies support different Catalogs, as shown in Table \ref{table:lakehouse_comparison}. Depending on the specific business need or on the available cloud resources and ecosystem, possible "pluggable" catalogs are:
 \begin{itemize}
-    \item \textbf{SQLite}: is a C library, with Python bindings, that provides lightweight disk-base database, that allows accessing the database with nonstandard variants of \gls{SQL}, where metadata can be saved. This does not require a separate server process, thus it is great in embedded applications, but it is not suitable for big-scale applications.
+    \item \textbf{SQL Catalog}: is a C library, with Python bindings (SQLite), that provides lightweight disk-base database, that allows accessing the database with nonstandard variants of \gls{SQL}, where metadata can be saved. This does not require a separate server process, thus it is great in embedded applications, but it is not suitable for large-scale applications.
     \item \textbf{\gls{AWS} Glue}: provides a Data Catalog that serves as a managed metastore within the \gls{AWS} ecosystem. It integrates well with other\gls{AWS} services, thus it is a common choice for data lakehouses built on \gls{AWS}.
     \item \textbf{DynamoDB}: it is primarily a No~\gls{SQL} databases that due to its scalability and performance, can be used as a metastore. This is less common compared to other options.
     \item \textbf{\gls{JDBC}}: per sé is not a catalog, but it's the standard Java \gls{API} for connecting to relational databases. In this context, \gls{JDBC} would be used to connect to and interact with database systems that stores metadata.
