@@ -26,4 +26,51 @@ In the choice of the query engine, all the candidates are known to be suitable f
 
 \subsection{Integration usage}
 \label{subsec:integration_usage}
+Once selected PyArrowFileIO as FileIO, SQLite as support to SQL Catalog, and DuckDB as query engine, all the libraries and dependencies are directly managed by the installation of the PyIceberg library, using the command \verb|pip install pyiceberg[pyarrow,duckdb,sql-lite]|, as described on PyIceberg documentation \cite{iceberg_tech_docs}. This integration supports all PyIceberg methods, but this Section will focus only on the methods used for the experiments. Listing \ref{lst:ch4_instanciate_catalog} describe how to instanciate an Iceberg catalog using SQLite, to enable metadata management on \gls{HopsFS} (or \gls{HDFS}), and how to create a namespace and a table within it:
 
+\begin{minipage}{\textwidth}
+\begin{python}[caption={[Instanciate Iceberg catalog with SQLite] Instanciating an Iceberg catalog using SQLite}, label={lst:ch4_instanciate_catalog}, basicstyle=\small]
+from pyiceberg.catalog.sql import SqlCatalog
+
+catalog = ("default",**{
+        "uri" : "sqlite:///catalog_path",
+        "warehouse" : "hdfs_path",      
+        "hdfs.host" : "hdfs.host" }) 
+catalog.create_namespace("ns")
+table = catalog.create_table(
+                "ns.table",
+                schema=your_df.schema,
+                location="hdfs_path",
+            )
+\end{python}
+\end{minipage}
+\medskip
+
+
+An example of write operation on \gls{HopsFS} (or \gls{HDFS}) is described in Listing \ref{lst:ch4_iceberg_write} here below:
+\medskip
+\begin{minipage}{\textwidth}
+    \begin{python}[caption={[Writing with PyIceberg] Writing a DataFrame with PyIceberg on an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_write}, basicstyle=\small]
+    from pyiceberg.catalog import load_catalog
+
+    df = pd.DataFrame({"num": [1, 2, 3], 
+                       "letter": ["a", "b", "c"]})
+    catalog = load_catalog()
+    table = catalog.load_table("ns.table")
+    table.append(df)
+    \end{python}
+\end{minipage}
+\medskip
+
+An example of read operation on \gls{HopsFS} (or \gls{HDFS}) is described in Listing \ref{lst:ch4_iceberg_read} here below:
+\medskip
+\begin{minipage}{\textwidth}
+    \begin{python}[caption={[Reading with PyIceberg] Reading a table with PyIceberg from an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_read}, basicstyle=\small]
+    from pyiceberg.catalog import load_catalog
+
+    catalog = load_catalog()
+    table = catalog.load_table("ns.table")
+    df = table.scan().to_arrow()
+    \end{python}
+\end{minipage}
+\medskip
