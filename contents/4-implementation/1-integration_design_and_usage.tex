@@ -24,7 +24,7 @@ In the choice of the query engine, all the candidates are known to be suitable f
 \end{itemize}
 
 
-\subsection{Integration usage}
+\subsection{Usage}
 \label{subsec:integration_usage}
 Once selected PyArrowFileIO as FileIO, SQLite as support to SQL Catalog, and DuckDB as query engine, all the libraries and dependencies are directly managed by the installation of the PyIceberg library, using the command \verb|pip install pyiceberg[pyarrow,duckdb,sql-lite]|, as described on PyIceberg documentation \cite{iceberg_tech_docs}. This integration supports all PyIceberg methods, but this Section will focus only on the methods used for the experiments. Listing \ref{lst:ch4_instanciate_catalog} describe how to instanciate an Iceberg catalog using SQLite, to enable metadata management on \gls{HopsFS} (or \gls{HDFS}), and how to create a namespace and a table within the namespace. Following this, an example of write operation on \gls{HopsFS} (or \gls{HDFS}) is described in Listing \ref{lst:ch4_iceberg_write}, while Listing \ref{lst:ch4_iceberg_read} provides an example of read operation on \gls{HopsFS} (or \gls{HDFS}).
 
