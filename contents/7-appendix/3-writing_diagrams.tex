@@ -37,7 +37,7 @@ This appendix contains all the graphs and the tables related to the write experi
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/7-appendix/results_diagrams/write/hudi_iceberg_delta/write_throughput_1_core.png}
+        \includegraphics[width=\textwidth]{figures/7-appendix/results_diagrams/write/hudi_iceberg_delta/write_time_1_core.png}
         \caption[Histogram of the write experiment - Latency - 1 CPU core]{Histogram in log-scale of the write experiment results expressed as latency. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:appx_res_write_time_1_core_HID}
     \end{minipage}
@@ -173,28 +173,28 @@ This appendix contains all the graphs and the tables related to the write experi
         \centering
         \captionof{table}[Write experiment - Throughput - 1 CPU core]{Write experiment results expressed as throughput. The experiment was performed with one \glstext{CPU} core.}
         \label{tbl:appx_res_write_throughput_1_core_HID}
-        \begin{tabular}{c r S[table-format=7.5] S[table-format=7.5] S[table-format=7.5]} 
+        \begin{tabular}{c r S[table-format=5.5] S[table-format=5.5] S[table-format=5.5]} 
             \toprule
             \multirow{2}{*}{{Pipeline\Tstrut\Bstrut}} & \multirow{2}{*}{{\thead{Number\\ of rows}}} & {\multirow{2}{*}{{\thead{Throughput \\ (k rows/second)}}}} & \multicolumn{2}{c}{{\thead{Throughput (k rows/second) \\95\% Confidence Interval}}}\\
                                                       &                                             &                                                          & {low} & {high}\\
             \midrule
-            \multirow{5}{4em}{Hudi\\Legacy} & 10K  &   199.05274 &   196.23277 &   202.02946\\
-                                            & 100K &  1679.09052 &  1661.20316 &  1697.45005\\
-                                            & 1M   &  8914.42526 &  8852.55259 &  8976.77534\\
-                                            & 6M   & 11722.20533 & 11698.43772 & 11749.66636\\
-                                            & 60M  & 22089.60777 & 21959.12848 & 22215.58201\\
+            \multirow{5}{4em}{Hudi\\Legacy}             &   10K   &      0.19905  &      0.19623  &      0.20203  \\
+                                                        &  100K   &      1.67909  &      1.66120  &      1.69745  \\
+                                                        &    1M   &      8.91443  &      8.85255  &      8.97678  \\
+                                                        &    6M   &     11.72221  &     11.69844  &     11.74967  \\
+                                                        &   60M   &     22.08961  &     21.95913  &     22.21558  \\
             \midrule
-            \multirow{5}{4em}{Iceberg\\PyIceberg} & 10K  &    8305.21414 &    8097.47741 &    8552.13678\\
-                                                  & 100K &   79036.57962 &   76974.09347 &   81866.64251\\
-                                                  & 1M   &  582172.95332 &  557726.35662 &  601411.81000\\
-                                                  & 6M   & 1677621.61097 & 1660186.12626 & 1697038.45776\\
-                                                  & 60M  & 2438044.51673 & 2420738.20916 & 2453683.12353\\
+            \multirow{5}{4em}{Iceberg\\PyIceberg}       &   10K   &      8.30521  &      8.09748  &      8.55214  \\
+                                                        &  100K   &     79.03658  &     76.97409  &     81.86664  \\
+                                                        &    1M   &    582.17295  &    557.72636  &    601.41181  \\
+                                                        &    6M   &   1677.62161  &   1660.18613  &   1697.03846  \\
+                                                        &   60M   &   2438.04452  &   2420.73821  &   2453.68312  \\
             \midrule
-            \multirow{5}{4em}{Delta Lake\\delta-rs} & 10K  &   7994.34761 &   7909.77029 &   8076.10878\\
-                                                    & 100K &  73099.23983 &  71965.37802 &  74753.62951\\
-                                                    & 1M   & 106583.58073 & 104803.16761 & 108218.77550\\
-                                                    & 6M   & 303774.53053 & 298336.72214 & 309493.32990\\
-                                                    & 60M  & 338610.80463 & 333246.70441 & 343674.23184\\
+            \multirow{5}{4em}{Delta Lake\\delta-rs}     &   10K   &      7.99435  &      7.90977  &      8.07611  \\
+                                                        &  100K   &     73.09924  &     71.96538  &     74.75363  \\
+                                                        &    1M   &    106.58358  &    104.80317  &    108.21878  \\
+                                                        &    6M   &    303.77453  &    298.33672  &    309.49333  \\
+                                                        &   60M   &    338.61080  &    333.24670  &    343.67423  \\
                                                       
             \bottomrule
         \end{tabular}
@@ -213,28 +213,28 @@ This appendix contains all the graphs and the tables related to the write experi
         \centering
         \captionof{table}[Write experiment - Throughput - 2 CPU cores]{Write experiment results expressed as throughput. The experiment was performed with two \glstext{CPU} cores.}
         \label{tbl:appx_res_write_throughput_2_cores_HID}
-        \begin{tabular}{c r S[table-format=7.5] S[table-format=7.5] S[table-format=7.5]}  
+        \begin{tabular}{c r S[table-format=5.5] S[table-format=5.5] S[table-format=5.5]}  
             \toprule
             \multirow{2}{*}{{Pipeline\Tstrut\Bstrut}} & \multirow{2}{*}{{\thead{Number\\ of rows}}} & {\multirow{2}{*}{{\thead{Throughput \\ (k rows/second)}}}} & \multicolumn{2}{c}{{\thead{Throughput (k rows/second) \\95\% Confidence Interval}}}\\
                                                       &                                             &                                                          & {low} & {high}\\
             \midrule
-            \multirow{5}{4em}{Hudi\\Legacy}      & 10K  &   197.13059  &   194.87110  &   199.54075\\
-                                                & 100K &  1672.89911  &  1653.36326  &  1691.83772\\
-                                                & 1M   &  9211.10364  &  9168.45112  &  9257.80572\\
-                                                & 6M   & 12674.72383  & 12646.11798  & 12703.61911\\
-                                                & 60M  & 25629.15745  & 25557.13028  & 25705.19531\\
+            \multirow{5}{4em}{Hudi\\Legacy}             &   10K   &      0.19713  &      0.19487  &      0.19954  \\
+                                                        &  100K   &      1.67290  &      1.65336  &      1.69184  \\
+                                                        &    1M   &      9.21110  &      9.16845  &      9.25781  \\
+                                                        &    6M   &     12.67472  &     12.64612  &     12.70362  \\
+                                                        &   60M   &     25.62916  &     25.55713  &     25.70520  \\
             \midrule
-            \multirow{5}{4em}{Iceberg\\PyIceberg} & 10K  &    8367.70228  &    7935.55834  &    8816.10220\\
-                                                 & 100K &   83360.01458  &   79839.44200  &   87638.80335\\
-                                                 & 1M   &  580895.14128  &  571995.64349  &  590311.25869\\
-                                                 & 6M   & 1682394.46093  & 1646514.35375  & 1712942.33986\\
-                                                 & 60M  & 2552340.15814  & 2548181.01226  & 2557028.17009\\
+            \multirow{5}{4em}{Iceberg\\PyIceberg}       &   10K   &      8.36770  &      7.93556  &      8.81610  \\
+                                                        &  100K   &     83.36001  &     79.83944  &     87.63880  \\
+                                                        &    1M   &    580.89514  &    571.99564  &    590.31126  \\
+                                                        &    6M   &   1682.39446  &   1646.51435  &   1712.94234  \\
+                                                        &   60M   &   2552.34016  &   2548.18101  &   2557.02817  \\
             \midrule
-            \multirow{5}{4em}{Delta Lake\\delta-rs} & 10K  &   7918.88096  &   7833.55692  &   7991.82526\\
-                                                   & 100K &  76498.69022  &  75188.33391  &  78166.02796\\
-                                                   & 1M   & 117368.39065  & 114919.50243  & 119859.82104\\
-                                                   & 6M   & 368063.92459  & 359930.14729  & 376882.77320\\
-                                                   & 60M  & 447241.63900  & 439277.42660  & 455345.34768\\
+            \multirow{5}{4em}{Delta Lake\\delta-rs}     &   10K   &      7.91888  &      7.83356  &      7.99183  \\
+                                                        &  100K   &     76.49869  &     75.18833  &     78.16603  \\
+                                                        &    1M   &    117.36839  &    114.91950  &    119.85982  \\
+                                                        &    6M   &    368.06392  &    359.93015  &    376.88277  \\
+                                                        &   60M   &    447.24164  &    439.27743  &    455.34535  \\            
             \bottomrule
         \end{tabular}
     \end{minipage}
@@ -252,28 +252,28 @@ This appendix contains all the graphs and the tables related to the write experi
         \centering
         \captionof{table}[Write experiment - Throughput - 4 CPU cores]{Write experiment results expressed as throughput. The experiment was performed with four \glstext{CPU} cores.}
         \label{tbl:appx_res_write_throughput_4_cores_HID}
-        \begin{tabular}{c r S[table-format=7.5] S[table-format=7.5] S[table-format=7.5]} 
+        \begin{tabular}{c r S[table-format=5.5] S[table-format=5.5] S[table-format=5.5]} 
             \toprule
             \multirow{2}{*}{{Pipeline\Tstrut\Bstrut}} & \multirow{2}{*}{{\thead{Number\\ of rows}}} & {\multirow{2}{*}{{\thead{Throughput \\ (k rows/second)}}}} & \multicolumn{2}{c}{{\thead{Throughput (k rows/second) \\95\% Confidence Interval}}}\\
                                                       &                                             &                                                          & {low} & {high}\\
             \midrule
-            \multirow{5}{4em}{Hudi\\Legacy}     &   10K   &     195.04029  &     192.61190  &     197.58999  \\
-                                                &  100K   &    1680.27669  &    1662.85950  &    1699.08749  \\
-                                                &    1M   &    9190.56612  &    9143.29267  &    9234.33987  \\
-                                                &    6M   &   12449.19942  &   12424.92779  &   12474.40876  \\
-                                                &   60M   &   25574.26227  &   25475.41012  &   25672.00975  \\
+            \multirow{5}{4em}{Hudi\\Legacy}             &   10K   &      0.19504  &      0.19261  &      0.19758  \\
+                                                        &  100K   &      1.68028  &      1.66286  &      1.69909  \\
+                                                        &    1M   &      9.19057  &      9.14329  &      9.23434  \\
+                                                        &    6M   &     12.44920  &     12.42493  &     12.47441  \\
+                                                        &   60M   &     25.57426  &     25.47541  &     25.67201  \\
             \midrule
-            \multirow{5}{4em}{Iceberg\\PyIceberg}  &   10K   &    8366.26993  &    8152.66704  &    8613.25608  \\
-                                                   &  100K   &   79697.14780  &   77816.50315  &   82052.80544  \\
-                                                   &    1M   &  612891.38485  &  597747.51880  &  630363.04983  \\
-                                                   &    6M   & 1692583.43173  & 1680055.53315  & 1707255.44211  \\
-                                                   &   60M   & 2499443.19781  & 2484091.83867  & 2510768.76960  \\
+            \multirow{5}{4em}{Iceberg\\PyIceberg}       &   10K   &      8.36627  &      8.15267  &      8.61326  \\
+                                                        &  100K   &     79.69715  &     77.81650  &     82.05281  \\
+                                                        &    1M   &    612.89138  &    597.74752  &    630.36305  \\
+                                                        &    6M   &   1692.58343  &   1680.05553  &   1707.25544  \\
+                                                        &   60M   &   2499.44320  &   2484.09184  &   2510.76877  \\
             \midrule
-            \multirow{5}{4em}{Delta Lake\\delta-rs} &   10K   &    8218.02924  &    8109.88845  &    8316.83880  \\
-                                                    &  100K   &   74820.47067  &   74050.66338  &   75578.59454  \\
-                                                    &    1M   &  118784.11348  &  116237.35924  &  121271.60828  \\
-                                                    &    6M   &  369835.13424  &  361760.40936  &  378999.43389  \\
-                                                    &   60M   &  483631.53234  &  474129.46579  &  495203.23632  \\
+            \multirow{5}{4em}{Delta Lake\\delta-rs}     &   10K   &      8.21803  &      8.10989  &      8.31684  \\
+                                                        &  100K   &     74.82047  &     74.05066  &     75.57859  \\
+                                                        &    1M   &    118.78411  &    116.23736  &    121.27161  \\
+                                                        &    6M   &    369.83513  &    361.76041  &    378.99943  \\
+                                                        &   60M   &    483.63153  &    474.12947  &    495.20324  \\
             \bottomrule
         \end{tabular}
     \end{minipage}
@@ -291,28 +291,28 @@ This appendix contains all the graphs and the tables related to the write experi
         \centering
         \captionof{table}[Write experiment - Throughput - 8 CPU cores]{Write experiment results expressed as throughput. The experiment was performed with eight \glstext{CPU} cores.}
         \label{tbl:appx_res_write_throughput_8_cores_HID}
-        \begin{tabular}{c r S[table-format=7.5] S[table-format=7.5] S[table-format=7.5]} 
+        \begin{tabular}{c r S[table-format=5.5] S[table-format=5.5] S[table-format=5.5]} 
             \toprule
             \multirow{2}{*}{{Pipeline\Tstrut\Bstrut}} & \multirow{2}{*}{{\thead{Number\\ of rows}}} & {\multirow{2}{*}{{\thead{Throughput \\ (k rows/second)}}}} & \multicolumn{2}{c}{{\thead{Throughput (k rows/second) \\95\% Confidence Interval}}}\\
                                                       &                                             &                                                          & {low} & {high}\\
             \midrule
-            \multirow{5}{4em}{Hudi\\Legacy}     &   10K   &     195.21345  &     192.95222  &     197.67807  \\
-                                                &  100K   &    1658.70267  &    1645.63630  &    1672.83862  \\
-                                                &    1M   &    9142.28991  &    9103.09744  &    9181.79165  \\
-                                                &    6M   &   12605.76130  &   12575.40944  &   12636.69010  \\
-                                                &   60M   &   25808.58957  &   25739.09161  &   25871.43218  \\
+            \multirow{5}{4em}{Hudi\\Legacy}         &   10K   &      0.19521  &      0.19295  &      0.19768  \\
+                                                    &  100K   &      1.65870  &      1.64564  &      1.67284  \\
+                                                    &    1M   &      9.14229  &      9.10310  &      9.18179  \\
+                                                    &    6M   &     12.60576  &     12.57541  &     12.63669  \\
+                                                    &   60M   &     25.80859  &     25.73909  &     25.87143  \\
             \midrule
-            \multirow{5}{4em}{Iceberg\\PyIceberg}  &   10K   &    8208.72824  &    7747.34838  &    8627.10040  \\
-                                                   &  100K   &   80090.88979  &   78352.19083  &   81977.33616  \\
-                                                   &    1M   &  581707.82303  &  577533.98845  &  586819.41216  \\
-                                                   &    6M   & 1698521.31195  & 1662196.40258  & 1727430.77830  \\
-                                                   &   60M   & 2539884.06709  & 2531591.50316  & 2546589.00275  \\
+            \multirow{5}{4em}{Iceberg\\PyIceberg}   &   10K   &      8.20873  &      7.74735  &      8.62710  \\
+                                                    &  100K   &     80.09089  &     78.35219  &     81.97734  \\
+                                                    &    1M   &    581.70782  &    577.53399  &    586.81941  \\
+                                                    &    6M   &   1698.52131  &   1662.19640  &   1727.43078  \\
+                                                    &   60M   &   2539.88407  &   2531.59150  &   2546.58900  \\
             \midrule
-            \multirow{5}{4em}{Delta Lake\\delta-rs} &   10K   &    7354.81049  &    6367.76735  &    8009.69774  \\
-                                                    &  100K   &   77387.40941  &   76265.73288  &   79015.66143  \\
-                                                    &    1M   &  120554.78447  &  118199.43031  &  122798.45207  \\
-                                                    &    6M   &  381579.81360  &  370912.17014  &  393712.18390  \\
-                                                    &   60M   &  492238.46299  &  483347.67878  &  502012.27941  \\
+            \multirow{5}{4em}{Delta Lake\\delta-rs} &   10K   &      7.35481  &      6.36777  &      8.00970  \\
+                                                    &  100K   &     77.38741  &     76.26573  &     79.01566  \\
+                                                    &    1M   &    120.55478  &    118.19943  &    122.79845  \\
+                                                    &    6M   &    381.57981  &    370.91217  &    393.71218  \\
+                                                    &   60M   &    492.23846  &    483.34768  &    502.01228  \\
             \bottomrule
         \end{tabular}
     \end{minipage}
