@@ -15,23 +15,23 @@ This appendix contains all the graphs and the tables related to the write experi
             \multirow{2}{*}{{Pipeline\Tstrut\Bstrut}} & \multirow{2}{*}{{\thead{Number\\ of rows}}} & {\multirow{2}{*}{{\thead{Latency \\ (seconds)}}}} & \multicolumn{2}{c}{{\thead{Latency (seconds) \\95\% Confidence Interval}}}\\
                                                       &                                             &                                                   & {low} & {high}\\
             \midrule
-            \multirow{5}{4em}{Hudi\\Legacy} & 10K  &    50.72779 &   50.11508 &   51.31597\\
-                                            & 100K &    59.77647 &   59.10732 &   60.48278\\
-                                            & 1M   &   108.56462 &  108.01696 &  109.06968\\
-                                            & 6M   &   473.38310 &  472.30635 &  474.45390\\
-                                            & 60M  &  2341.08359 & 2334.15850 & 2347.68142\\
+            \multirow{5}{4em}{Hudi\\Legacy}             &   10K   &     50.23794  &     49.49773  &     50.95989  \\
+                                                        &  100K   &     59.55605  &     58.91190  &     60.19733  \\
+                                                        &    1M   &    112.17773  &    111.39858  &    112.96177  \\
+                                                        &    6M   &    511.84908  &    510.65280  &    512.88900  \\
+                                                        &   60M   &   2716.20939  &   2700.80703  &   2732.34888  \\
             \midrule
-            \multirow{5}{4em}{Iceberg\\PyIceberg} & 10K  &     1.19507 &    1.13429 &    1.26015\\
-                                                  & 100K &     1.19962 &    1.14105 &    1.25251\\
-                                                  & 1M   &     1.72148 &    1.69402 &    1.74827\\
-                                                  & 6M   &     3.56635 &    3.50274 &    3.64406\\
-                                                  & 60M  &    23.50784 &   23.46474 &   23.54621\\
+            \multirow{5}{4em}{Iceberg\\PyIceberg}       &   10K   &      1.20406  &      1.16930  &      1.23495  \\
+                                                        &  100K   &      1.26524  &      1.22150  &      1.29914  \\
+                                                        &    1M   &      1.71770  &      1.66275  &      1.79299  \\
+                                                        &    6M   &      3.57649  &      3.53557  &      3.61405  \\
+                                                        &   60M   &     24.60989  &     24.45304  &     24.78583  \\
             \midrule
-            \multirow{5}{4em}{Delta Lake\\delta-rs} & 10K  &     1.26280 &    1.25128 &    1.27656\\
-                                                    & 100K &     1.30721 &    1.27933 &    1.32999\\
-                                                    & 1M   &     8.52018 &    8.34308 &    8.70174\\
-                                                    & 6M   &    16.30152 &   15.92007 &   16.66990\\
-                                                    & 60M  &   134.15567 &  131.76812 &  136.58794\\
+            \multirow{5}{4em}{Delta Lake\\delta-rs}     &   10K   &      1.25088  &      1.23822  &      1.26426  \\
+                                                        &  100K   &      1.36800  &      1.33773  &      1.38956  \\
+                                                        &    1M   &      9.38231  &      9.24054  &      9.54170  \\
+                                                        &    6M   &     19.75149  &     19.38652  &     20.11150  \\
+                                                        &   60M   &    177.19458  &    174.58394  &    180.04679  \\
             \bottomrule
         \end{tabular}
     \end{minipage}
@@ -77,7 +77,7 @@ This appendix contains all the graphs and the tables related to the write experi
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/7-appendix/results_diagrams/write/hudi_iceberg_delta/write_throughput_2_core.png}
+        \includegraphics[width=\textwidth]{figures/7-appendix/results_diagrams/write/hudi_iceberg_delta/write_time_2_core.png}
         \caption[Histogram of the write experiment - Latency - 2 CPU cores]{Histogram in log-scale of the write experiment results expressed as latency. The experiment was performed with two \glstext{CPU} cores.}
         \label{fig:appx_res_write_time_2_cores_HI}
     \end{minipage}
