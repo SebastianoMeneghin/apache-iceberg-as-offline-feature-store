@@ -1,1 +1,102 @@
-This appendix contains the comparative tables for the technologies presented in Section \ref{subsec:history_DBMS}--\ref{subsec:datalakehouse_comparison}, respectively between the different \gls{DBMS} developed along their history, and the different open table formats presented in this thesis report.
+This appendix contains the comparative tables for the technologies presented in Section \ref{subsec:history_DBMS}--\ref{subsec:datalakehouse_comparison}, respectively between the different \glspl{DBMS} developed along their history, and the different \Glspl{OTF} presented in this thesis report.
+
+
+
+
+\begin{figure}
+    \centering
+    \begin{minipage}[b]{\textwidth}
+        \centering
+        \captionof{table}[Comparison of data architectures]{Comparison of key features of Data Warehouses, Data Lakes, and Data Lakehouses \cite{inmonFiveStepsSuccessful}. Technologies presented and discussed in details in Section \ref{subsec:history_DBMS}.}
+        \label{tbl:DBMS_comparison}
+            \begin{tabular}{|p{2.2cm}|p{3cm}|p{2.9cm}|p{3cm}|}
+            \hline
+            \textit{\textbf{Feature}} & \textbf{Data Warehouse} & \textbf{Data Lake} & \textbf{Data Lakehouse} \\
+            \hline
+            \textit{Primary Use} & Business Intelligence, \gls{SQL} Analytics & Unstructured data storage, \gls{AI}/\gls{ML} workflows & Unified storage for structured/unstructured data, \gls{SQL} + \gls{AI}/\gls{ML} processing \\
+            \hline
+            \textit{Data Type} & Structured & Unstructured & All data types \\
+            \hline
+            \textit{Query Performance} & Optimized for \gls{SQL}-based queries, fast indexed access & Slow for structured queries, requires extensive data preparation & High performance for both \gls{SQL} and \gls{ML} workloads \\
+            \hline
+            \textit{Schema Enforcement} & Strict schema-on-write & Schema-on-read & Flexible schema with enforcement and evolution support \\
+            \hline
+            \textit{\gls{ACID} support} & Fully supported & Not supported & Fully supported \\
+            \hline
+            \textit{Scalability} & Limited scalability due to high storage costs & High scalability, low-cost storage & Highly scalable with structured query optimizations \\
+            \hline
+            \textit{Storage Cost} & High due to proprietary formats & Low due to object storage & Moderate, optimized for efficiency \\
+            \hline
+            \textit{Governance} & Strong governance, access control, and security & Weak governance, risk of data swamps & Fine-grained governance with access control and security \\
+            \hline
+            \textit{Key Takeaways} & Best for structured data and BI queries. High-performance \gls{SQL} analytics. & Ideal for cost-effective big data storage. Difficult to manage and query efficiently & Combines the best of warehouses and lakes. Supports both \gls{SQL} and \gls{AI}/\gls{ML} use cases efficiently. \\
+            \hline
+        \end{tabular}
+    \end{minipage}
+\end{figure}
+
+
+
+\begin{figure}
+    \centering
+    \begin{minipage}[b]{\textwidth}
+        \centering
+        \captionof{table}[Comparison of data lakehouses]{Comparison of key features of Apache Hudi, Apache Iceberg, Delta Lake \cite{hudi_tech_docs,iceberg_tech_docs,deltalake_tech_docs}. Technologies presented and discussed in details in Section \ref{subsec:datalakehouse_comparison}.}
+        \label{tbl:lakehouse_comparison}
+        \begin{tabular}{|p{2.6cm}|p{3.2cm}|p{2.4cm}|p{3cm}|}
+            \hline
+            \textit{\textbf{Feature}} & \textbf{Apache Hudi} & \textbf{Apache Iceberg} & \textbf{Delta Lake} \\
+            \hline
+            \begin{tabular}[t]{@{}l@{}} \textit{Metadata} \\ \textit{Implementation} 
+            \end{tabular} & Tabular & Hierarchical & Tabular \\
+            \hline
+            \textit{Time Travel} & snapshots & transaction log & incremental commits \\
+            \hline
+            \textit{Caching} & No & Yes & Yes \\
+            \hline
+            \textit{Optimization} & \gls{CoW}, \gls{MoR} & \gls{CoW}, \gls{MoR} & \gls{CoW} \\
+            \hline
+            \begin{tabular}[t]{@{}l@{}} \textit{Schema} \\ \textit{Evolution} 
+            \end{tabular} & Limited & Full & Partial \\
+            \hline
+            \begin{tabular}[t]{@{}l@{}} \textit{Partition} \\ \textit{Evolution} 
+            \end{tabular} & Explicit & Hidden & Explicit \\
+            \hline
+            \begin{tabular}[t]{@{}l@{}} \textit{Concurrency} \\ \textit{Control} 
+            \end{tabular} & Optimistic, Multi-version & Optimistic & Optimistic \\
+            \hline
+            \textit{Storage Engines} & \multicolumn{3}{c|}{\gls{HDFS}, \gls{AWS} S3, \gls{GCS}, Azure Blob Storage} \\
+            \hline
+            \textit{File Formats} & 
+                \begin{tabular}[t]{@{}l@{}} Parquet \\ Avro \\ ORC
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Parquet \\ Avro \\ ORC 
+                \end{tabular} & Parquet \\
+            \hline
+            \textit{Catalogs} & 
+                \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue 
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ JDBC \\ REST 
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Hive \\ \gls{AWS} Glue \\ Unity 
+                \end{tabular} \\
+            \hline
+            \textit{Query Engines} & 
+                \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Presto \\ Hive \\ Impala
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Spark \\ Flink \\ Presto \\ Athena \\ Trino \\ Snowflake 
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Spark \\ Presto \\ Athena \\ Redshift \\ Snowflake 
+                \end{tabular} \\
+            \hline
+            \textit{\glspl{API}} & 
+                \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python (Spark) \\ Rust \\ Scala (Spark,Flink)
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Java (Spark) \\ Python \\ Rust
+                \end{tabular} & 
+                \begin{tabular}[t]{@{}l@{}} Java (Spark,Flink) \\ Python (Spark) \\ Rust \\ Scala (Spark)
+                \end{tabular} \\
+            \hline
+        \end{tabular}
+    \end{minipage}
+\end{figure}
