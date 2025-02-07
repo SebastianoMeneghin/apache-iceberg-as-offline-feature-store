@@ -1,0 +1,17 @@
+This appendix reports the legacy architecture diagrams, described in Section \ref{sec:arch_sys}, here increased in size to improve readability.
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[angle=90,origin=c,keepaspectratio,height=12.5cm]{figures/2-background_and_related_work/hudi_write.png}
+    \end{center}
+    \caption[Legacy system - Write process - Magnified diagram]{Legacy system writing a Pandas DataFrame from a Python client to the Hopsworks offline feature store.  This image was magnified to enhance visualization.}
+    \label{fig:appx_hudi_write_schema}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[angle=90,origin=c,keepaspectratio,height=12.5cm]{figures/2-background_and_related_work/hudi_read.png}
+    \end{center}
+    \caption[Legacy system - Read process - Magnified diagram]{Legacy system reading a table from the Hopsworks offline feature store and loading it into the Python client's local memory. This image was magnified to enhance visualization.}
+    \label{fig:appx_hudi_reading_schema}
+\end{figure}
