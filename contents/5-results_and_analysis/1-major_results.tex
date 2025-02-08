@@ -92,25 +92,19 @@ Figures~\ref{fig:res_write_time_HID}--\ref{fig:res_write_throughput_HID}, and Ta
 
 Both histograms, i.e., Figures~\ref{fig:res_write_time_HID}--\ref{fig:res_write_throughput_HID}, report the results of the experiment performed with one \gls{CPU} core. Instead, Tables~\ref{tbl:res_write_time_cpu_perc_HID}--\ref{tbl:res_write_throughput_cpu_perc_HID} also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
 
-
 %%%%% WRITE RESULTS /// HUDI vs. ICEBERG %%%%%
 \subsubsection*{Legacy pipeline vs. PyIceberg}
-
-
-
+The latency on write operations measured using the PyIceberg pipeline is more than fourty times lower than the latency measured using the legacy pipeline, in all the experiments. This trend is more prominent for bigger tables (6M and 60M rows), where latency measured using the PyIceberg pipeline is less than one hundredth of the latency measured usign the legacy system.
 
 %%%%% WRITE RESULTS /// ICEBERG vs. DELTA LAKE %%%%%
 \subsubsection*{PyIceberg vs. delta-rs}
-
-
-
+The latency on write operations measured using the PyIceberg pipeline is lower than the latency measured using the delta-rs pipeline, in all the experiments. This trend is more prominent for the biggest table (60M rows), where latency measured using the PyIceberg pipeline is around seven times lower than the latency measured using the delta-rs pipeline, while it is lesser prominent the smaller are the tables, with approximatively equal latency for the smallest table (10K rows).
 
 %%%%% WRITE RESULTS /// PERFORMANCES WITH DIFFERENT CORE(S)
 \subsubsection*{Change of performance as the \glsentryshort{CPU} cores increase}
-
-
-
-
+The experiments with increased \gls{CPU} cores showed different results across the different pipeline technologies.  For the legacy system, significant latency reductions were only observed for the largest table (60M rows), with a decrease of approximately 14\%. Smaller tables (10K and 100K rows) actually saw slight increases in latency, and even the larger tables (1M and 6M rows) only improved by a maximum of 7\%. 
+PyIceberg saw some benefit from additional \gls{CPU} cores, but the improvement was limited, with only a maximum of 5\% descrease in latency for some tables (100K, 60M). 
+The most substantial gains were seen with delta-rs, where the larger tables (6M and 60M rows) experienced considerable improvements of 20-30\%, and smaller tables (100K and 1M rows) only saw modest latency decreases of 5-10\%.
 
 
 
@@ -196,29 +190,21 @@ Figures~\ref{fig:res_read_time_HID}--\ref{fig:res_read_throughput_HID}, and Tabl
 
 Both histograms, i.e., Figures~\ref{fig:res_read_time_HID}--\ref{fig:res_read_throughput_HID}, report the results of the experiment performed with one \gls{CPU} core. Instead, Tables~\ref{tbl:res_read_time_cpu_perc_HID}--\ref{tbl:res_read_throughput_cpu_perc_HID} also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
 
-
-
 %%%%% WRITE RESULTS /// HUDI vs. ICEBERG %%%%%
 \subsubsection*{Legacy pipeline vs. PyIceberg}
-
-
-
+The latency of read operation measured using the PyIceberg pipeline results from 55\% up to sixty times lower than the latency measured using the legacy pipeline. The most prominent reduction  (sixty times) is obtained in the table containing 100k rows, while the less prominent (55\%) is obtained with the largest table (60M rows). Regarding the other tables, the PyIceberg pipeline has around fifteen times lower read operation latency than the legacy system.
 
 %%%%% WRITE RESULTS /// ICEBERG vs. DELTA LAKE %%%%%
 \subsubsection*{PyIceberg vs. delta-rs}
-
-
-
+The latency on read operations measured using the PyIceberg pipeline is completely comparable with the latency measured usign the delta-rs pipeline, if not for the smallest table (10K), where PyIceberg pipeline latency was three times lower than delta-rs pipeline latency. For the other tables,
+The latency on write operations measured using the PyIceberg pipeline is lower than the latency measured using the delta-rs pipeline, in all the experiments. This trend is more prominent for the biggest table (60M rows), where latency measured using the PyIceberg pipeline is around seven times lower than the latency measured using the delta-rs pipeline, while it is lesser prominent the smaller are the tables, with approximatively equal latency for the smallest table (10K rows).
 
 %%%%% WRITE RESULTS /// PERFORMANCES WITH DIFFERENT CORE(S)
 \subsubsection*{Change of performance as the \glsentryshort{CPU} cores increase}
-
-
-
-
-
-
-
+The experiments with increased \gls{CPU} cores showed different results across the different pipeline technologies. In the legacy pipeline, increasing the number of \gls{CPU} cores had minimal impact on latency reduction. The observed improvements remained below 1\% for most table sizes, with some cases even showing slight increases.
+PyIceberg saw some benefit from utilizing multiple \gls{CPU} cores. While the smallest table (10K rows) showed a slight increase in latency, all other tables benefited from latency reductions. For tables larger than 100K rows, the reduction was more pronounced, reaching around 39\% for mid-sized and large tables (1M, 6M, and 60M rows).
+Delta-rs showed the most substantial gains in read latency with additional CPU cores. For small tables (10K and 100K rows), the letancy reductions remained below 5\%, but for tables larger than 100K rows, the reduction was significant, reaching around 55\% for mid-sized table (1M rows) and around 50\% for larger tables (6M and 60M rows).
+The trend continued with additional cores, further enhancing performance as table sizes increased.
 
 
 
@@ -255,11 +241,7 @@ Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} and Figure \ref{fig:hudi_virtu
 
 Considering the upload time contribution to the write latency, this represents a small percentage (around 5\%) when writing smaller tables (10K and 100K) rows, while it grows following a similarly linear pattern in larger tables (100K, 6M, and 60M rows). This radically changes the proportion between the upload and materialized time contributions, making the upload time 90\% of the total write latency for the largest table (60M rows). Differently, the materialization time contribution makes up 95\% of the total write latency for the smallest table (10K rows), but then its absolute value does not increase by more than a significant figure even if the table size is increased by three significant figures.
 
-Observing the results of experiments on multiple \gls{CPU} cores, the upload time benefits from a higher number of \gls{CPU} cores, especially with larger tables (15\% latency decrease compared to a 4\% with smaller tables), while the materialize time is not affected, having either small decreases in latency or small increases (both around 1-2\%).
-
-
-
-
+Analyzing the impact of multiple \gls{CPU} cores, the upload time benefits significantly from increased core availability, particularly for larger tables, where latency decreases by 15\% compared to just 4\% for smaller tables. In contrast, the materialize time remains largely unaffected, showing only minor fluctuations, with latency varying by 1-2\%.
 
 
 
