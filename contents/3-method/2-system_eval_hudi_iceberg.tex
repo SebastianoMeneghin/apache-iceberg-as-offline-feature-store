@@ -1,6 +1,6 @@
 This Section explains the method and principles used for the system evaluation processes, measuring and comparing the performance (latency, in seconds, and throughput, in rows/second) of reading and writing Hudi and Iceberg tables on \gls{HopsFS}. Those operations are conducted respectively on the current legacy system and on the PyIceberg-based system, integrated in this thesis work.
 
-\subsection{Evaluation process - RQ1 - Hudi vs. Iceberg}
+\subsection{Evaluation process - RQ1}
 \label{subsec:eval_process_hudi_iceberg}
 This evaluation process will follow a sequential approach described in Figure~\ref{fig:method_experiments}. Each step of this process is related to one of the \glspl{G}3--6 associated with the \gls{RQ}1 in Section \ref{sec:intro_goals}, to which this process partially answer. The relationships between each process activity and \glspl{G} are here explained:
 \begin{enumerate}
@@ -106,7 +106,7 @@ In conclusion, the experiments conducted will be a total of two (pipelines) time
 \subsection{Experimental environment}
 \label{subsec:experimental_env}
 
-The experimental environment consists of a physical machine in Hopsworks AB' offices, virtualized to enable remote shared development. The \gls{CPU} details of the machine are present in Listing \ref{lst:cpu_snurran}, noting that only eight cores at maximum were dedicated during the experiments. The machine mounts about 5.4 TBs of \gls{SSD} memory, allowing for fast read and write speed, respectively 2.7 GB/s, and 1.9 GB/s (measured with a simple \textit{dd} bash command). The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment. The Jupyter server is allocated by default with 2048MB, which will be adjusted during the experiments, according to the needs (see Section \todo{add resource usage reference here}).
+The experimental environment consists of a physical machine in Hopsworks AB' offices, virtualized to enable remote shared development. The \gls{CPU} details of the machine are present in Listing \ref{lst:cpu_snurran}, noting that only eight cores at maximum were dedicated during the experiments. The machine mounts about 5.4 TBs of \gls{SSD} memory, allowing for fast read and write speed, respectively 2.7 GB/s, and 1.9 GB/s (measured with a simple \textit{dd} bash command). The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment. The Jupyter server is allocated by default with 2048MB, which will be adjusted during the experiments, according to the needs (see Section \ref{subsec:resources_usage}).
 
 Notica that, despite this experimental environment is virtualized in isolation, it runs on shared resources, thus experiments result might vary depending on the machine's load. To mitigate this, all experiments will be run when the machine load is low (less than 50\% of \gls{CPU} and \gls{RAM} usage).
 
