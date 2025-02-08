@@ -18,14 +18,13 @@ Perhaps the industrial use case described in Section \ref{subsec:method_use_case
 
 %%%%% CONSIDERATIONS ON THE LEGACY SYSTEM
 \subsection{Considerations on the legacy system}
-
-
-
-
-
-
+The legacy system, described in Sections \ref{subsec:back_sys_hudi_write}-\ref{subsec:back_sys_hudi_read}, consists of a multi-layered architecture that employs Spark as compute engine and Hudi as \gls{OTF}. This system is modeled to support multiple users, each having different use cases and resources. This could create several bottlenecks, depending on the scenario, that goes far beyong the high latency of instanciating a Spark cluster. An example for this issue is uses Kafka, which is used as single data entry-point in the Hopsworks feature store. Using Kafka as single entry-point ensures data consistency between the online feature store, working with streaming data, and the offline feature store, working on batch data. However, this creates a performance bottleneck for this infrastructure as data increases, needing to make a piece the full table in single rows, to save each of those as a single message. This was clearly visible in the experiments conducted in this thesis work, described in Figure \ref{fig:hudi_virtualiz_breakdown} and Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc}, where Kafka accounted for more than 95\% of the latency of the write operations. Now that these experiments outlined this problem, more research is needed to find an effective solution. Some approaches might reduce the overall latencies: (1) implement micro-batching mechanism, altogether with using columns-based format for data exchange; (2) enable client multi-processing, to support multiple settings with multiple \gls{CPU} cores; (3) refine trade-off between partitions, topic replicas and brokers.
 
 
 
 %%%%% CONSIDERATIONS ON THE PYICEBERG LIBRARY
 \subsection{Considerations on the PyIceberg library}
+The system integration between Iceberg and \gls{HopsFS}, described in Section \ref{sec:integration_design_and_usage}, was possible thanks to the PyIceberg library, developed by the Iceberg open-source community for Python access to Iceberg Table. It was possible to create a Spark alternative system thanks to the high level of integrability of the library and the overarching \gls{OTF} (compared to its counterparts, as highlighted in \ref{tbl:lakehouse_comparison}), and thanks to several other online and book sources documenting this framework and library. The author's recommendation on this regard are: (1) the Iceberg and PyIceberg maintainers should revise their current documentation and integrate it with new findings, thus developers can directly access all the information needed from Iceberg webpage, without the need of buying a book, or of relying on documentation created by software companies that integrates Iceberg in their products; (2) intensively investigate solution for efficient local resources management, that might make Iceberg libraries better adaptable to changing local environment, as delta-rs shown to be able to, during the experiments described in Section \ref{sec:major_results}.
+
+
+\todo{maybe add consideration on Iceberg vs. delta-rs, if not already added in Conclusions.}
