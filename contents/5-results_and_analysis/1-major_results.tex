@@ -190,16 +190,16 @@ Figures~\ref{fig:res_read_time_HID}--\ref{fig:res_read_throughput_HID}, and Tabl
 
 Both histograms, i.e., Figures~\ref{fig:res_read_time_HID}--\ref{fig:res_read_throughput_HID}, report the results of the experiment performed with one \gls{CPU} core. Instead, Tables~\ref{tbl:res_read_time_cpu_perc_HID}--\ref{tbl:res_read_throughput_cpu_perc_HID} also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
 
-%%%%% WRITE RESULTS /// HUDI vs. ICEBERG %%%%%
+%%%%% READ RESULTS /// HUDI vs. ICEBERG %%%%%
 \subsubsection*{Legacy pipeline vs. PyIceberg}
 The latency of read operation measured using the PyIceberg pipeline results from 55\% up to sixty times lower than the latency measured using the legacy pipeline. The most prominent reduction  (sixty times) is obtained in the table containing 100k rows, while the less prominent (55\%) is obtained with the largest table (60M rows). Regarding the other tables, the PyIceberg pipeline has around fifteen times lower read operation latency than the legacy system.
 
-%%%%% WRITE RESULTS /// ICEBERG vs. DELTA LAKE %%%%%
+%%%%% READ RESULTS /// ICEBERG vs. DELTA LAKE %%%%%
 \subsubsection*{PyIceberg vs. delta-rs}
 The latency on read operations measured using the PyIceberg pipeline is completely comparable with the latency measured usign the delta-rs pipeline, if not for the smallest table (10K), where PyIceberg pipeline latency was three times lower than delta-rs pipeline latency. For the other tables,
 The latency on write operations measured using the PyIceberg pipeline is lower than the latency measured using the delta-rs pipeline, in all the experiments. This trend is more prominent for the biggest table (60M rows), where latency measured using the PyIceberg pipeline is around seven times lower than the latency measured using the delta-rs pipeline, while it is lesser prominent the smaller are the tables, with approximatively equal latency for the smallest table (10K rows).
 
-%%%%% WRITE RESULTS /// PERFORMANCES WITH DIFFERENT CORE(S)
+%%%%% READ RESULTS /// PERFORMANCES WITH DIFFERENT CORE(S)
 \subsubsection*{Change of performance as the \glsentryshort{CPU} cores increase}
 The experiments with increased \gls{CPU} cores showed different results across the different pipeline technologies. In the legacy pipeline, increasing the number of \gls{CPU} cores had minimal impact on latency reduction. The observed improvements remained below 1\% for most table sizes, with some cases even showing slight increases.
 PyIceberg saw some benefit from utilizing multiple \gls{CPU} cores. While the smallest table (10K rows) showed a slight increase in latency, all other tables benefited from latency reductions. For tables larger than 100K rows, the reduction was more pronounced, reaching around 39\% for mid-sized and large tables (1M, 6M, and 60M rows).
