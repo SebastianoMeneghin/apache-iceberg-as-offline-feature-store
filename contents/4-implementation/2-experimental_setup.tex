@@ -23,7 +23,7 @@ The run time of the experiments, i.e., the read and write latency, was measured 
 Running in an isolated Python environment, the timeit approach had two limitations: (1) it was not possible to breakdown the two main steps performed by the legacy system when performing a write operation, (2) it was not possible to separate the timings of the creation of a new catalog and of the read operations in the new Iceberg system, since timeit cannot access variables declared elsewhere (this catalog creation/deletion was necessary at every step, to the machine to perform caching). Thus, for those two cases, see Sections \ref{subsec:back_sys_hudi_write} and \ref{subsec:back_sys_iceberg_read}, a second approach was implemented. This approach consisted in recording the time before and after the script run, using the function time, from the Python standard library called time, and an example of this approach is showed in Listing \ref{lst:ch4_timetime}. The usage of two different approaches was not considered problematic during the experiments, as some trials revealed that the latency measured by the two methods was equal within a 95\% confidence interval.
 
 \begin{minipage}{\textwidth}
-    \begin{python}[caption={[Measuring latency using the time difference] A simple time difference approach the time to read from Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timetime}]
+    \begin{python}[caption={[Measuring latency using the time difference] A simple time difference approach the time to read from Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timetime}, basicstyle=\small]
     import time
     from pyiceberg.catalog import load_catalog
 
