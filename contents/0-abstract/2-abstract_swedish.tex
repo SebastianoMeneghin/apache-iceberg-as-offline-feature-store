@@ -3,10 +3,18 @@
 swe
 \end{scontents}
 
-\begin{scontents}[store-env=abstracts,print-env=true]
-% Abstract in swedish must be written here
 
+
+\begin{scontents}[store-env=abstracts,print-env=true]
+Det växande behovet av effektiv datahantering i arbetsflöden för maskininlärning (ML) har lett till en utbredd användning av feature stores -- centraliserade dataplattformar som stöder feature engineering, modellträning och inferens. Hopsworks feature store har visat bättre prestanda jämfört med sina alternativ och använder Apache Hudi och Spark för offline-datalagring. Dock lider systemet av hög skriv- och läslatens, även för små datamängder (1 GB eller mindre). Denna avhandling undersöker potentialen hos Apache Iceberg som ett alternativt tabellformat och integrerar det med HopsFS (Hopsworks HDFS-distribution) samt PyIceberg Python-biblioteket för att minska latensen.
+
+Forskningen inleds med en utvärdering av potentiella systemintegrationsalternativ, där fördelar och begränsningar med varje metod dokumenteras. Därefter implementeras och utvärderas en PyIceberg-baserad arkitektur, vilken jämförs med den befintliga Spark-baserade lösningen samt en alternativ Delta Lake-implementering (delta-rs). Omfattande experiment genomfördes med varierande tabellstorlekar och CPU-konfigurationer för att bedöma skriv- och läsprestanda. Resultaten visar att PyIceberg avsevärt minskar skrivfördröjningen -- från 40 till 140 gånger lägre än det äldre systemet -- och läsfördröjningen -- från 55\% till 60 gånger lägre än det äldre systemet. Jämfört med delta-rs uppvisar PyIceberg minskad skrivfördröjning för stora tabeller -- upp till sju gånger lägre -- och liknande läsfördröjning, men har sämre skalningsfördelar vid ökning av CPU-kärnor (20\% mindre än delta-rs).
+
+Dessa resultat bekräftar att alternativ till Spark-baserade pipelines i småskaliga scenarier är möjliga och värda ytterligare undersökningar. Det implementerade systemet kommer att integreras i Hopsworks feature store. Dessutom utgör denna avhandling en baslinje för framtida forskning kring ytterligare öppna tabellformat, alternativa programmeringsspråk för att hantera Pythons prestandabegränsningar samt strategier för att förbättra resursutnyttjandet i datahanteringsplattformar.
 \end{scontents}
+
+
+
 \subsection*{Nyckelord}
 \begin{scontents}[store-env=keywords,print-env=true]
 % SwedishKeywords were set earlier, hence we can use alternative 2

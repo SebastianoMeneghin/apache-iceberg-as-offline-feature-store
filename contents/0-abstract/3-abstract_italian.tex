@@ -3,12 +3,19 @@
 ita
 \end{scontents}
 
-\begin{scontents}[store-env=abstracts,print-env=true]
-% Abstract in italian must be written here
 
+
+\begin{scontents}[store-env=abstracts,print-env=true]
+La crescente necessità di piattaforme per una efficience gestione dei dati per applicazioni di \textbf{Machine Learning (ML)} ha portato a un'ampia diffusione dei \textbf{feature store}, piattaforme dati centralizzate che supportano \textbf{feature engineering}, addestramento di modelli e inferenza. Il \textbf{feature store} di Hopsworks ha dimostrato prestazioni superiori rispetto alle sue alternative, sfruttando Apache Hudi e Spark per il \textbf{suo offline feature store}. Tuttavia, questo sisteme soffre di un'elevata latenza di scrittura e lettura, anche per piccole quantità di dati (1GB o inferiori). Questa tesi esplora l'uso di Apache Iceberg come \textbf{table format} alternativo, integrandolo con HopsFS (distribuzione Hopsworks di HDFS) e la libreria Python PyIceberg per ridurre tali latenze.
+
+Questa ricerca inizia con un'analisi delle possibili strategie di integrazione, documentando i vantaggi e i limiti di ciascun approccio. Successivamente, viene implementata e valutata un'architettura basata su PyIceberg, confrontata con la soluzione esistente basata su Spark e con un'alternative basata su Delta Lake (delta-rs). Esperimenti approfonditi sono stati condotti su tabelle di diverse dimensioni e diverse configurazioni CPU per misurare le prestazioni di scrittura e lettura. I risultati mostrano che PyIceberg riduce significativamente la latenza di scrittura -- da 40 a 140 volte inferiore rispetto al sistema legacy -- e la latenza di lettura -- dal 55\% a 60 volte inferiore. Rispetto a delta-rs, PyIceberg offre una latenza di scrittura inferiore per le tabelle più grandi -- fino a 7 volte minore -- e prestazioni di lettura equivalenti, ma mostra minori vantaggi di scalabilità con l'aumento dei CPU cores (20\% ridotti rispetto a delta-rs).
+
+Questi risultati confermano che alternative ad architetture basate su Spark, per gestire dati su piccola scala, esistono e sono più efficienti, e dunque il sistema sviluppato verrà integrato nel \textbf{feature store} di Hopsworks. Inoltre, questa tesi fornisce una base per futuri studi su nuovi \textbf{open table format} e strategie da adottare per ottimizzare l'uso delle risorse nelle piattaforme di gestione dei dati.
 \end{scontents}
+
+
 
 \subsection*{Parole Chiave}
 \begin{scontents}[store-env=keywords,print-env=true]
-5-6 parole chiave
+Machine Learning, Feature Store, Apache Iceberg, PyIceberg, Latenza in Lettura/Scrittura, Open Table Formats.
 \end{scontents}

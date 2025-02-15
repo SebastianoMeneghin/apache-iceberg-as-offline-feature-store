@@ -8,20 +8,22 @@ eng
 %%% entry of the meta data for your thesis.
 %%% These page(s) will be removed before the thesis is inserted into DiVA.
 
-\generalExpl{Keep in mind that most of your potential readers are only going to read your \texttt{title} and \texttt{abstract}. This is why the abstract must give them enough information so that they can decide if this document is relevant to them or not. Otherwise, the likely default choice is to ignore the rest of your document.\\
-An abstract should stand on its own, i.e., no citations, cross-references to the body of the document, acronyms must be spelled out, \ldots .\\Write this early and revise as necessary. This will help keep you focused on what you are trying to do.}
+
 
 \begin{scontents}[store-env=abstracts,print-env=true]
-Write an abstract that is about 250 and 350 words (1/2 A4-page)  with the following components:
-% key parts of the abstract
-\begin{itemize}
-  \item What is the topic area? 
-  \item (optional) Introduces the subject area for the project.
-  \item Short problem statement
-  \item Why was this problem worth a Master’s thesis project? (\ie, why is the problem both significant and of a suitable degree of difficulty for Master’s thesis project? Why has no one else solved it yet?)
-  \item How did you solve the problem? What was your method/insight?
-  \item Results/Conclusions/Consequences/Impact: What are your key results/\linebreak[4]conclusions? What will others do based on your results? What can be done now that you have finished - that could not be done before your thesis project was completed?
-\end{itemize}
+The growing need for efficient data management in Machine Learning (ML) workflows has led to the widespread adoption of feature stores, centralized data platforms that supports feature engineering, model training and prediction inference. The Hopsworks' feature store has demonstrated outperformance compared to its alternatives, leveraging Apache Hudi and Spark for offline data storage, but suffers from high write and read latency, even for small quantities of data (1GB or less). This thesis explores the potential of Apache Iceberg as an alternative table format, integrating it with HopsFS (Hopsworks HDFS distribution) and PyIceberg Python library to reduce latencies.
+
+The research begin with an evaluation of potential system integration alternatives, documenting the advantages and limitations of each approach. Then, a PyIceberg-based architecture is implemented and evaluated, benchmarking it against the existing Spark-based solution and an alternative Delta Lake implementation (delta-rs). Extensive experiments were conducted across varying table sizes and CPU configurations to assess write and read performance. Results show that PyIceberg significantly reduces write latency -- from 40 to 140 times lower than the legacy system -- and read latency -- from 55\% to 60 times lower than the legacy system. Compared to delta-rs, PyIceberg demonstrates reduced write latency for large tables -- up to 7 times lower -- and equal read latency, but exhibits lower scaling benefits with additional CPU cores -- 20\% less than delta-rs.
+
+These findings confirm that alternatives to Spark-based pipelines in small-scale scenarios are possible and are worth of further investigations, and the system implemented will be included in the Hopsworks feature store. Furthermore, this thesis work and results finally provides a baseline for future work about additional open table formats, alternative languages to mitigate Python's performance overhead, and strategies to improve resource utilization in data management platforms.
+
+% Describe the following:
+% What is the topic area? 
+% (optional) Introduces the subject area for the project.
+% Short problem statement
+% Why was this problem worth a Master’s thesis project? (\ie, why is the problem both significant and of a suitable degree of difficulty for Master’s thesis project? Why has no one else solved it yet?)
+% How did you solve the problem? What was your method/insight?
+% Results/Conclusions/Consequences/Impact: What are your key results/\linebreak[4]conclusions? What will others do based on your results? What can be done now that you have finished - that could not be done before your thesis project was completed?
 \end{scontents}
 
 
@@ -34,10 +36,10 @@ Write an abstract that is about 250 and 350 words (1/2 A4-page)  with the follow
 \end{scontents}
 
 
-\textbf{Formatting the keywords}:
-\begin{itemize}
-  \item The first letter of a keyword should be set with a capital letter and proper names should be capitalized as usual.
-  \item Spell out acronyms and abbreviations.
-  \item Avoid "stop words" - as they generally carry little or no information.
-  \item List your keywords separated by commas (",").
-\end{itemize}
+%\textbf{Formatting the keywords}:
+%\begin{itemize}
+  %\item The first letter of a keyword should be set with a capital letter and proper names should be capitalized as usual.
+  %\item Spell out acronyms and abbreviations.
+  %\item Avoid "stop words" - as they generally carry little or no information.
+  %\item List your keywords separated by commas (",").
+%\end{itemize}
