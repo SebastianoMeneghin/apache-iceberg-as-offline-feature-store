@@ -19,8 +19,6 @@ Therefore, supporting Iceberg with a native Python client would be directly bene
 
 This project seeks to reduce latency (in seconds), thus increasing throughput (in rows/second), of reading and writing data on Iceberg tables, as offline feature store in Hopsworks. At time of writing, the writing pipeline is Spark-based and uses Hudi as \gls{OTF}, while this thesis seeks to employ Iceberg without Spark-dependencies. If the hypothesis that a faster non-Spark alternative is possible is proved, Hopsworks AB will consider this alternative as an integration or replacement of their current open-source feature store implementation. This could considerably improve the experience of Python users working with small-scale datasets (1 GB to 100 GB). More broadly, this thesis will discuss the feasibility of Spark alternatives in small-scale use scenarios \cite{manfrediReducingReadWrite2024}.
 
-\generalExpl{Revise the following part of the introduction once drafted implementation and conclusion chapters}
-
 The primary contributions of this work are:
 \begin{itemize}
     \item The evaluation of the possible technologies for the integrations between Iceberg and Hopsworks feature store, and the selection of the best one according to defined requirements, described in Section \ref{subsec:integration_reqs}. The solution most fitting the requirements consists of SQLCatalog as catalog, DuckDB as query engine, and PyArrowFileIO as FileIO.
