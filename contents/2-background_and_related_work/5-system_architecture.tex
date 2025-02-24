@@ -37,7 +37,7 @@ Figure \ref{fig:hudi_read}~\footnote{For enhanced visualization, refer Figure \r
 
 
 %%%%% ICEBERG WRITE
-\subsection{New system - PyIceberg - writing}
+\subsection{IcedHops - writing}
 \label{subsec:back_sys_iceberg_write}
 
 Figure \ref{fig:iceberg_write} shows how the PyIceberg library writes on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and request to read the table. The PyIceberg library streamlines the process without passing from a server instance (Spark), removing the middle-tier from the process.
@@ -46,14 +46,14 @@ Figure \ref{fig:iceberg_write} shows how the PyIceberg library writes on an Iceb
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/iceberg_write.png}
     \end{center}
-    \caption[New system - PyIceberg - write process]{PyIceberg library writing an Arrow Table from a Python client to an Iceberg Table stored on \gls{HopsFS}.}
+    \caption[IcedHops - write process]{PyIceberg library writing an Arrow Table from a Python client to an Iceberg Table stored on \gls{HopsFS}.}
     \label{fig:iceberg_write}
 \end{figure}
 
 
 
 %%%%% ICEBERG READ
-\subsection{New system - PyIceberg - reading}
+\subsection{IcedHops - reading}
 \label{subsec:back_sys_iceberg_read}
 
 Figure \ref{fig:iceberg_read} shows how the PyIceberg library reads on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and proceed to write (append), by column, on the Iceberg Table. The PyIceberg library streamlines the process without passing from a server instance (Arrow Flight), removing the middle-tier from the process.
@@ -62,14 +62,14 @@ Figure \ref{fig:iceberg_read} shows how the PyIceberg library reads on an Iceber
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/iceberg_read.png}
     \end{center}
-    \caption[New system - PyIceberg - read process]{PyIceberg library reading an Iceberg Table stored on \gls{HopsFS} and loading it into memory.}
+    \caption[IcedHops - read process]{PyIceberg library reading an Iceberg Table stored on \gls{HopsFS} and loading it into memory.}
     \label{fig:iceberg_read}
 \end{figure}
 
 
 
 %%%%% DELTA LAKE WRITE
-\subsection{New system - delta-rs - writing}
+\subsection{delta-rs - writing}
 \label{subsec:back_sys_delta_write}
 
 Figure \ref{fig:delta_write} shows how the delta-rs library writes on a Delta Lake table instanced on top of \gls{HopsFS}. The delta-rs library streamlines the process without passing from a server instance (Spark), removing the middle-tier from the process. In this system, the only file format supported is Parquet, while the other systems supported also ORC and Avro.
@@ -78,14 +78,14 @@ Figure \ref{fig:delta_write} shows how the delta-rs library writes on a Delta La
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/delta_write.png}
     \end{center}
-    \caption[New system - delta-rs - write process]{Delta-rs library writing an Arrow Table from a Python client to a Delta Lake table stored on \gls{HopsFS}.}
+    \caption[delta-rs - write process]{Delta-rs library writing an Arrow Table from a Python client to a Delta Lake table stored on \gls{HopsFS}.}
     \label{fig:delta_write}
 \end{figure}
 
 
 
 %%%%% DELTA LAKE READ
-\subsection{New system - delta-rs - reading}
+\subsection{delta-rs - reading}
 \label{subsec:back_sys_delta_read}
 
 Figure \ref{fig:delta_read} shows how the delta-rs library reads a Delta Lake table instanced on top of \gls{HopsFS}. The delta-rs library streamlines the process without passing from a server instance (Arrow Flight), removing the middle-tier from the process. In this system, the only file format supported is Parquet, while the other systems supported also ORC and Avro.
@@ -94,6 +94,6 @@ Figure \ref{fig:delta_read} shows how the delta-rs library reads a Delta Lake ta
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/delta_read.png}
     \end{center}
-    \caption[New system - delta-rs - read process]{Delta-rs library reading a Delta Lake table stored in \gls{HopsFS} and loading it into memory.}
+    \caption[delta-rs - read process]{Delta-rs library reading a Delta Lake table stored in \gls{HopsFS} and loading it into memory.}
     \label{fig:delta_read}
 \end{figure}
