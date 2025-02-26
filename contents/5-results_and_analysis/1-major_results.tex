@@ -1,5 +1,5 @@
 
-This Section presents the main results of the one eighty experiments performed as defined in Section \ref{subsec:experimental_design}, and the fourty experiments performed in the related work \cite{manfrediReducingReadWrite2024}, conducted with the same experimental desing and environment. The experiments are grouped into subsections according to the measured operation, i.e., read or write. Each Subsection presents histograms and tables to visualize the results using both metrics, i.e., latency (measured in seconds) and throughput (measured in rows/secodns), defined in \gls{RQ}2.
+This Section presents the main results of the eighty experiments performed as defined in Section \ref{subsec:experimental_design}, and the fourty experiments performed in the related work \cite{manfrediReducingReadWrite2024}, conducted with the same experimental desing and environment. The experiments are grouped into subsections according to the measured operation, i.e., read or write. Each Subsection presents histograms and tables to visualize the results using both metrics, i.e., latency (measured in seconds) and throughput (measured in rows/secodns), defined in \gls{RQ}2.
 
 It must be noted that the results are visualized using a log scale for clarity, as results differing from more than one significant figure would not be clearly interpreted using a linear scale, in a histogram representation. For each measurement, a 95\% confidence interval was calculated using the bootstrapping technique mentioned in Section \ref{subsec:method_reliability_validity}. For better readibility, this interval is not reported in the histograms of this Section, but it is reported in Appendices \ref{appx:res_write}--\ref{appx:res_read}, with a histogram and a table for each experiment expressed in both metrics.
 
@@ -94,7 +94,7 @@ Both histograms, i.e., Figures~\ref{fig:res_write_time_HID}--\ref{fig:res_write_
 
 %%%%% WRITE RESULTS /// HUDI vs. ICEDHOPS %%%%%
 \subsubsection*{Legacy pipeline vs. IcedHops}
-The latency on write operations measured using IcedHops is more than fourty times lower than the latency measured using the legacy pipeline, in all the experiments. This trend is more prominent for bigger tables (6M and 60M rows), where latency measured using IcedHops is less than one hundredth of the latency measured usign the legacy system.
+The latency on write operations measured using IcedHops is more than fourty times lower than the latency measured using the legacy pipeline, in all the experiments. This trend is more prominent for bigger tables (6M and 60M rows), where latency measured using IcedHops is less than one hundredth of the latency measured using the legacy system.
 
 %%%%% WRITE RESULTS /// ICEDHOPS vs. DELTA LAKE %%%%%
 \subsubsection*{IcedHops vs. delta-rs}
@@ -196,7 +196,7 @@ The latency of read operation measured using IcedHops results from 55\% up to si
 
 %%%%% READ RESULTS /// ICEDHOPS vs. DELTA LAKE %%%%%
 \subsubsection*{IcedHops vs. delta-rs}
-The latency on read operations measured using IcedHops is completely comparable with the latency measured usign the delta-rs pipeline, if not for the smallest table (10K), where IcedHops latency was three times lower than delta-rs pipeline latency. For the other tables,
+The latency on read operations measured using IcedHops is completely comparable with the latency measured using the delta-rs pipeline, if not for the smallest table (10K), where IcedHops latency was three times lower than delta-rs pipeline latency. For the other tables,
 The latency on write operations measured using IcedHops is lower than the latency measured using the delta-rs pipeline, in all the experiments. This trend is more prominent for the biggest table (60M rows), where latency measured using IcedHops is around seven times lower than the latency measured using the delta-rs pipeline, while it is lesser prominent the smaller are the tables, with approximatively equal latency for the smallest table (10K rows).
 
 %%%%% READ RESULTS /// PERFORMANCES WITH DIFFERENT CORE(S)
