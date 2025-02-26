@@ -13,7 +13,7 @@ The integration development process will follow an iterative in Figure \ref{fig:
     \item \textbf{Test integration}: this activity partially solves \gls{G}2, verifying the solution validity with integration tests. Failed integration tests or unfulfilled requirements will triggen a new loop iteration. Otherwise, the integretion process will be concluded.
 \end{enumerate}
 
-This process will produce a part of \gls{D}3, which is the code implementation for PyIceberg and \gls{HopsFS} integration, including the consideration about the specific tools selected or discarded.
+This process will produce a part of \gls{D}3, which is the code implementation for IcedHops, the PyIceberg and \gls{HopsFS} integration, including the consideration about the specific tools selected or discarded.
 
 \begin{figure}[!t]
     \begin{center}
@@ -36,7 +36,7 @@ The \textbf{non-functional requirements} are:
 \begin{enumerate}
     \item \textbf{Consistency}: the solution should be consistent with the current open-source codebase.
     \item \textbf{Maintainability}: the solution should minimize the need for maintenance and support.
-    \item \textbf{Scalability}: the solution should handle read or write operations on Iceberg Tables, up to 100 GB, to support small-scale dataset scenarios.
+    \item \textbf{Scalability}: the solution should handle read or write operations on Iceberg tables, up to 100 GB, to support small-scale dataset scenarios.
 \end{enumerate}
 
 

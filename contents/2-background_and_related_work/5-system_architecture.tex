@@ -1,4 +1,4 @@
-This Section describes the architectures of the legacy, based on Hudi the system implemented during this thesis work, based on Iceberg, and the system implemented in a related thesis work \cite{manfrediReducingReadWrite2024}, based on Delta Lake. Those are the system that will be run and measured in teh experimental part of this thesis work. This Section is divided into six Subsections, according to the system and the operation run over it. For each Subsection, a chart presents the operation protocol step by step.
+This Section describes the architectures of the legacy system, based on Hudi, of IcedHops, developed during this thesis work and based on Iceberg, and the system implemented in a related thesis work \cite{manfrediReducingReadWrite2024}, based on Delta Lake. Those are the system that will be run and measured in the experimental part of this thesis work. This Section is divided into six Subsections, according to the system and the operation run over it. For each Subsection, a chart presents the operation protocol step by step.
 
 
 
@@ -36,33 +36,33 @@ Figure \ref{fig:hudi_read}~\footnote{For enhanced visualization, refer Figure \r
 
 
 
-%%%%% ICEBERG WRITE
+%%%%% ICEDHOPS WRITE
 \subsection{IcedHops - writing}
 \label{subsec:back_sys_iceberg_write}
 
-Figure \ref{fig:iceberg_write} shows how the PyIceberg library writes on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and request to read the table. The PyIceberg library streamlines the process without passing from a server instance (Spark), removing the middle-tier from the process.
+Figure \ref{fig:iceberg_write} shows IcedHops writes on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and request to read the table. IcedHops streamlines the process without passing from a server instance (Spark), removing the middle-tier from the process.
 
 \begin{figure}
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/iceberg_write.png}
     \end{center}
-    \caption[IcedHops - write process]{PyIceberg library writing an Arrow Table from a Python client to an Iceberg Table stored on \gls{HopsFS}.}
+    \caption[IcedHops - write process]{IcedHops writing an Arrow Table from a Python client to an Iceberg Table stored on \gls{HopsFS}.}
     \label{fig:iceberg_write}
 \end{figure}
 
 
 
-%%%%% ICEBERG READ
+%%%%% ICEDHOPS READ
 \subsection{IcedHops - reading}
 \label{subsec:back_sys_iceberg_read}
 
-Figure \ref{fig:iceberg_read} shows how the PyIceberg library reads on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and proceed to write (append), by column, on the Iceberg Table. The PyIceberg library streamlines the process without passing from a server instance (Arrow Flight), removing the middle-tier from the process.
+Figure \ref{fig:iceberg_read} shows how IcedHops reads on an Iceberg table instanced on top of \gls{HopsFS}. If first requests metadata information about the existing table to Iceberg Catalog, implemented using SQLite in the example. Once the JSON file containing the metadata is received, it reads the table location and proceed to write (append), by column, on the Iceberg Table. IcedHops streamlines the process without passing from a server instance (Arrow Flight), removing the middle-tier from the process.
 
 \begin{figure}
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background_and_related_work/iceberg_read.png}
     \end{center}
-    \caption[IcedHops - read process]{PyIceberg library reading an Iceberg Table stored on \gls{HopsFS} and loading it into memory.}
+    \caption[IcedHops - read process]{IcedHops reading an Iceberg Table stored on \gls{HopsFS} and loading it into memory.}
     \label{fig:iceberg_read}
 \end{figure}
 

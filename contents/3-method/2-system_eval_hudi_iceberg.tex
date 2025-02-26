@@ -1,10 +1,10 @@
-This Section explains the method and principles used for the system evaluation processes, measuring and comparing the performance (latency, in seconds, and throughput, in rows/second) of reading and writing Hudi and Iceberg tables on \gls{HopsFS}. Those operations are conducted respectively on the current legacy system and on the PyIceberg-based system, integrated in this thesis work.
+This Section explains the method and principles used for the system evaluation processes, measuring and comparing the performance (latency, in seconds, and throughput, in rows/second) of reading and writing Hudi and Iceberg tables on \gls{HopsFS}. Those operations are conducted respectively on the current legacy system and on IcedHops, integrated in this thesis work.
 
 \subsection{Evaluation process - RQ2}
 \label{subsec:eval_process_hudi_iceberg}
 This evaluation process will follow a sequential approach described in Figure~\ref{fig:method_experiments}. Each step of this process is related to one of the \glspl{G}3--6 associated with the \gls{RQ}2 in Section \ref{sec:intro_goals}, to which this process answers. The relationships between each process activity and \glspl{G} are here explained:
 \begin{enumerate}
-    \item \textbf{Design experiments}: this activity maps perfectly to \gls{G}3, designing the experiments that will be conducted to evaluate the performance difference in performance between the current legacy access to Apache Hudi compared to the PyIceberg library-based access to Icbeerg Tables in \gls{HopsFS}. 
+    \item \textbf{Design experiments}: this activity maps perfectly to \gls{G}3, designing the experiments that will be conducted to evaluate the performance difference in performance between the current legacy access to Apache Hudi compared to the IcedHops PyIceberg-based access to Icbeerg Tables in \gls{HopsFS}. 
     \item \textbf{Perform experiments}: this activity maps perfectly to \gls{G}4, using the integration detail (\gls{D}3-partial) to develop and conduct the designed experiments on the analyzed systems. Here, data is collected as latency, expressed in seconds.
     \item \textbf{Transform data according to metrics}: this activity is requisite to fulfill \gls{G}5, and \gls{G}8 of \gls{RQ}3. The activity is conducted because throughput is not directly measured, but it is computed from latency following the formula here below:
     \[ Throughput \; (rows/second) = \frac{Number \; of \; rows \; (rows)}{Latency \;(seconds)}\]
@@ -14,7 +14,7 @@ This evaluation process will follow a sequential approach described in Figure~\r
 \begin{figure}[!ht]
     \begin{center}
     \includegraphics[width=0.7\textwidth]{figures/3-method/method_exp.png}
-    \caption[System evaluation process - Hudi vs. Iceberg]{Diagram of the system evaluation process answering \gls{RQ}2. Each activity is associated to specific \gls{G}. The process produces two \glspl{D}, the experiments results (\gls{D}1) and a results analysis (\gls{D}3-partial).}
+    \caption[System evaluation process - Legacy vs. IcedHops]{Diagram of the system evaluation process answering \gls{RQ}2. Each activity is associated to specific \gls{G}. The process produces two \glspl{D}, the experiments results (\gls{D}1) and a results analysis (\gls{D}3-partial).}
     \label{fig:method_experiments}
     \end{center}
 \end{figure}
@@ -90,10 +90,10 @@ Lastly, despite no information are given about the row and storage size (bytes) 
 \subsection{Experimental design}
 \label{subsec:experimental_design}
 
-The experiments aim to highlight the differences between the current legacy system and the the newly implemented system based on the PyIceberg library. Two experimental pipelines were designed to isolate the performance of those two systems:
+The experiments aim to highlight the differences between the current legacy system and IcedHops. Two experimental pipelines were designed to isolate the performance of those two systems:
 \begin{enumerate}
   \item \textbf{Legacy pipeline}: is the current Hopsworks feature store which stores data in Hudi tables. This system uses a pipeline based on Kafka, and Spark to write data on the Hudi tables, saved on \gls{HopsFS}. The pipeline uses a Spark alternative, DuckDB, and Arrow Flight to read data. This is described in Sections \ref{subsec:back_sys_hudi_write}-\ref{subsec:back_sys_hudi_read}.
-  \item \textbf{PyIceberg - \glsentryshort{HopsFS}}: is the system implemented in Chapter \ref{ch:implementation}, which stores data in Iceberg Tables. This systems uses a pipeline based on PyIceberg, SQLite, and Arrow Flight to both write to and read from the Iceberg tables, saved on \gls{HopsFS}. This is described in Sections \ref{subsec:back_sys_iceberg_write}-\ref{subsec:back_sys_iceberg_read}.
+  \item \textbf{IcedHops}: is the system implemented in Chapter \ref{ch:implementation}, which stores data in Iceberg Tables. This systems uses a pipeline based on PyIceberg, SQLite, and Arrow Flight to both write to and read from the Iceberg tables, saved on \gls{HopsFS}. This is described in Sections \ref{subsec:back_sys_iceberg_write}-\ref{subsec:back_sys_iceberg_read}.
 \end{enumerate}
 
 The experiments will verify how the performance will change based on different \gls{CPU} resources provided: one, two, four, and eight cores, according to the typical Hopsworks use case (Section \ref{subsec:method_use_case}). Each time, the experimental environment will be modified, creating a new Jupyter server where the host the experiments. The data used for experiments, as described in Section \ref{subsec:experimental_data}, will come from two different tables, modified according to a \gls{SF}, for a total of five times for each table. For the writing experiments conducted on the legacy system, different parts of the whole writing process will be measured, to verify how different parts of the legacy system will scale in the different environments described above. Those two parts are the upload and the materialization, which are explained in Section \ref{subsec:back_sys_hudi_write}. This will also help defining whether and what part of the legacy pipeline is a bottleneck.
@@ -150,7 +150,7 @@ The system evaluation framework will evaluate the different system on three key 
 \begin{enumerate}
     \item \textbf{Functional requirements}: will be measured by verifying the success or failure of running an experiment. This will not happen by design, since the system integration phase stops only when all functional requirements are met. Those are escribed in Section \ref{subsec:integration_reqs}:
     \item \textbf{Non-functional requirements}: Consistency and maintainability are mainly addressed during integration, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput, as defined in \gls{RQ}1.
-    \item \textbf{How does the legacy pipeline compare to the PyIceberg pipeline?} this question answers directly \gls{RQ}2, measuring the throughput of the pipelines defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
+    \item \textbf{How does the legacy pipeline compare to IcedHops?} this question answers directly \gls{RQ}2, measuring the throughput of the pipelines defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
 
 

@@ -10,12 +10,12 @@ However, the Hopsworks feature store has not been yet integrated with Iceberg, a
 \subsection{Research Questions} 
 \label{subsec:research_questions}
 
-This research project aims to assess and compare the performance of the legacy system, relying on Hudi and Spark, against IcedHops, a newly developed systems providing an alternative to Spark, and a comprehensive comparison of the latters. Those systems features the PyIceberg library~\footnotemark[\value{footnote}], which operates on Iceberg tables, and the Rust delta-rs library~\footnote{Project repository available at \url{https://github.com/delta-io/delta-rs}}, which operates on Delta Lake tables, in both cases hosted on \gls{HopsFS}. To do this, an implementation for the interaction of Iceberg with the Hopsworks feature store must be designed. Accordingly, this study tackles the three following \glspl{RQ}:
+This research project aims to assess and compare the performance of the legacy system, relying on Hudi and Spark, against IcedHops, a newly developed systems providing an alternative to Spark, and a comprehensive comparison of the latters. Those systems features the PyIceberg library~\footnotemark[\value{footnote}], which operates on Iceberg tables, and the Rust delta-rs library~\footnote{Project repository available at \url{https://github.com/delta-io/delta-rs}}, which operates on Delta Lake tables, in both cases hosted on \gls{HopsFS}. To do this, an integration of Iceberg with the Hopsworks feature store must be designed. Accordingly, this study tackles the three following \glspl{RQ}:
 
 \begin{enumerate}
     \item[RQ1:] Is a working integration of PyIceberg and HopsFS in the Hopsworks offline feature store possible?
-    \item[RQ2:] What are the differences in read and write latency and throughput on the Hopsworks offline feature store, between the existing legacy system and the PyIceberg alternative?
-    \item[RQ3:] What are the differences in read and write latency and throughput on the Hopsworks offline feature store, between the new PyIceberg system and the delta-rs alternative?
+    \item[RQ2:] What are the differences in read and write latency and throughput on the Hopsworks offline feature store, between the existing legacy system and IcedHops?
+    \item[RQ3:] What are the differences in read and write latency and throughput on the Hopsworks offline feature store, between IcedHops and the delta-rs alternative?
 \end{enumerate}
 
 It is fundamental to notice that, while the measured performance is expected to be comparable if PyIceberg and/or delta-rs are included into the Hopsworks client in the future, they are officially not functioning via the offline feature store \gls{API} but only using the same file system, \gls{HopsFS}.

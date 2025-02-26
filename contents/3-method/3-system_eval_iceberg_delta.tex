@@ -1,4 +1,4 @@
-This Section firstly explains the steps of this system evaluation processes, aimed at measuring and comparing the performance (latency, in seconds, and throughput, in rows/second) of reading and writing Iceberg and Delta Lake tables on \gls{HopsFS}. Those experiments will be conducted respectively on the PyIceberg-based system, integrated in this thesis work, and on the delta-rs-based system, implemented in a related work \cite{manfrediReducingReadWrite2024}. Then, it presents the evaluation framework used by in this process.
+This Section firstly explains the steps of this system evaluation processes, aimed at measuring and comparing the performance (latency, in seconds, and throughput, in rows/second) of reading and writing Iceberg and Delta Lake tables on \gls{HopsFS}. Those experiments will be conducted respectively on IcedHops, integrated in this thesis work, and on the delta-rs-based system, implemented in a related work \cite{manfrediReducingReadWrite2024}. Then, it presents the evaluation framework used by in this process.
 
 
 
@@ -14,7 +14,7 @@ This evaluation process will follow a sequential approach described in Figure~\r
 \begin{figure}[!ht]
     \begin{center}
     \includegraphics[width=0.7\textwidth]{figures/3-method/method_comp.png}
-    \caption[System evaluation process - PyIceberg vs. delta-rs]{Diagram of the system evaluation process answering \gls{RQ}3. Each activity is associated to specific \gls{G}. The process produces two \glspl{D}, the comparative expertiments results (\gls{D}2) and a comparative results analysis (\gls{D}3-partial).}
+    \caption[System evaluation process - IcedHops vs. delta-rs]{Diagram of the system evaluation process answering \gls{RQ}3. Each activity is associated to specific \gls{G}. The process produces two \glspl{D}, the comparative expertiments results (\gls{D}2) and a comparative results analysis (\gls{D}3-partial).}
     \label{fig:method_comparison}
     \end{center}
 \end{figure}
@@ -25,10 +25,10 @@ This evaluation process will follow a sequential approach described in Figure~\r
 \subsection{Evaluation framework}
 \label{subsec:method_eval_framework_iceberg_delta}
 
-This system evaluation framework is similar to the system evaluation framework described in Section \ref{subsec:method_eval_framework_hudi_iceberg}, but will not focus on functional requirements, as they will be already assessed in previous Section, for PyIceberg, and they have been already assessed in the related work, for delta-rs. Thus, this evaluation framework will evaluate the different system on two key aspects:
+This system evaluation framework is similar to the system evaluation framework described in Section \ref{subsec:method_eval_framework_hudi_iceberg}, but will not focus on functional requirements, as they will be already assessed in previous Section, for IcedHops, and they have been already assessed in the related work, for delta-rs. Thus, this evaluation framework will evaluate the different system on two key aspects:
 \begin{enumerate}
     \item \textbf{Non-functional requirements}: Consistency and maintainability are mainly addressed during integration, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput, as defined in \gls{RQ}2.
-    \item \textbf{How does the PyIceberg pipeline compare to the delta-rs pipeline?} this question answers directly \gls{RQ}3, measuring the throughput of the PyIceberg pipeline defined in Section \ref{subsec:experimental_design} and the delta-rs pipeline \cite{manfrediReducingReadWrite2024}. Results are then compared using a visual approach.
+    \item \textbf{How does IcedHops compare to delta-rs?} this question answers directly \gls{RQ}3, measuring the throughput of IcedHops defined in Section \ref{subsec:experimental_design} and the delta-rs pipeline \cite{manfrediReducingReadWrite2024}. Results are then compared using a visual approach.
 \end{enumerate}
 
 

@@ -2,7 +2,7 @@ As defined in Section \ref{subsec:experimental_design}, experiments run differen
 The run time of the experiments, i.e., the read and write latency, was measured using two different approaches. This decision is motivated by the need to measure accurate results, while it was impossible to use the most precise measurement approach in all systems. The first approach uses the Python timeit function, which isolates the process running the code, proving a reasonable estimate of the operation latency. As illustrated in Listing \ref{lst:ch4_timeit}, timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script, and was used to conduct the experiments about the read operations of legacy system, described in Section~\ref{subsec:back_sys_hudi_read}.
 
 \begin{minipage}{\textwidth}
-    \begin{python}[caption={[Measuring latency using Timeit] Timeit usage to measure the time to read from Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timeit}, basicstyle=\small]
+    \begin{python}[caption={[Measuring latency using Timeit] Timeit usage to measure the time to read from an Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timeit}, basicstyle=\small]
     import timeit
     SETUP_CODE='''
     from pyiceberg.catalog import load_catalog'''
@@ -20,10 +20,10 @@ The run time of the experiments, i.e., the read and write latency, was measured 
 \end{minipage}
 \medskip
 
-Running in an isolated Python environment, the timeit approach had two limitations: (1) it was not possible to breakdown the two main steps performed by the legacy system when performing a write operation, (2) it was not possible to separate the timings of the creation of a new catalog and of the read operations in the new Iceberg system, since timeit cannot access variables declared elsewhere (this catalog creation/deletion was necessary at every step, to the machine to perform caching). Thus, for those two cases, see Sections \ref{subsec:back_sys_hudi_write} and \ref{subsec:back_sys_iceberg_read}, a second approach was implemented. This approach consisted in recording the time before and after the script run, using the function time, from the Python standard library called time, and an example of this approach is showed in Listing \ref{lst:ch4_timetime}. The usage of two different approaches was not considered problematic during the experiments, as some trials revealed that the latency measured by the two methods was equal within a 95\% confidence interval.
+Running in an isolated Python environment, the timeit approach had two limitations: (1) it was not possible to breakdown the two main steps performed by the legacy system when performing a write operation, (2) it was not possible to separate the timings of the creation of a new catalog and of the read operations in IcedHops, since timeit cannot access variables declared elsewhere (this catalog creation/deletion was necessary at every step, to the machine to perform caching). Thus, for those two cases, see Sections \ref{subsec:back_sys_hudi_write} and \ref{subsec:back_sys_iceberg_read}, a second approach was implemented. This approach consisted in recording the time before and after the script run, using the function time, from the Python standard library called time, and an example of this approach is showed in Listing \ref{lst:ch4_timetime}. The usage of two different approaches was not considered problematic during the experiments, as some trials revealed that the latency measured by the two methods was equal within a 95\% confidence interval.
 
 \begin{minipage}{\textwidth}
-    \begin{python}[caption={[Measuring latency using the time difference] A simple time difference approach the time to read from Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timetime}, basicstyle=\small]
+    \begin{python}[caption={[Measuring latency using the time difference] A simple time difference approach the time to read from an Iceberg table stored on \gls{HopsFS}.}, label={lst:ch4_timetime}, basicstyle=\small]
     import time
     from pyiceberg.catalog import load_catalog
 

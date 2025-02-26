@@ -50,7 +50,7 @@ Once selected PyArrowFileIO as FileIO, SQLite as support to SQL Catalog, and Duc
 
 %%%% WRITE WITH PYICEBERG
 \begin{minipage}{\textwidth}
-    \begin{python}[caption={[Writing with PyIceberg] Writing a DataFrame with PyIceberg on an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_write}, basicstyle=\small]
+    \begin{python}[caption={[Writing with IcedHops] Writing a DataFrame with IcedHops on an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_write}, basicstyle=\small]
     import pandas as pd
     from pyiceberg.catalog import load_catalog
 
@@ -66,7 +66,7 @@ Once selected PyArrowFileIO as FileIO, SQLite as support to SQL Catalog, and Duc
 
 %%%% READ WITH PYICEBERG
 \begin{minipage}{\textwidth}
-    \begin{python}[caption={[Reading with PyIceberg] Reading a table with PyIceberg from an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_read}, basicstyle=\small]
+    \begin{python}[caption={[Reading with IcedHops] Reading a table with IcedHops from an Iceberg Table stored on \gls{HopsFS} (or \gls{HDFS}).}, label={lst:ch4_iceberg_read}, basicstyle=\small]
     from pyiceberg.catalog import load_catalog
 
     catalog = load_catalog()
