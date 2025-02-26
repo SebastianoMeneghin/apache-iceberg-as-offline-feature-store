@@ -4,7 +4,7 @@ This Section explains the method and principles used for the system integration 
 %%%%%  INTEGRATION PROCESS
 \subsection{Integration process}
 \label{subsec:integration_process}
-The integration development process will follow an iterative in Figure \ref{fig:method_code_schema}. This project will require numerous interactions with \gls{HopsFS} maintainers (i.e., the industrial supervisors), since PyIceberg library has to interact with \gls{HopsFS}. This review process creates the need for a feedback loop, allowing the system to fit all the stakeholder requirements, described in Subsection~\ref{subsec:integration_reqs}. This process partially answer \gls{RQ}1, to which \glspl{G}1--2 are associated, as described in Section~\ref{sec:intro_goals}. The relationships between each process activity and \glspl{G} are here explained:
+The integration development process will follow an iterative in Figure \ref{fig:method_code_schema}. This project will require numerous interactions with \gls{HopsFS} maintainers (i.e., the industrial supervisors), since PyIceberg library has to interact with \gls{HopsFS}. This review process creates the need for a feedback loop, allowing the system to fit all the stakeholder requirements, described in Subsection~\ref{subsec:integration_reqs}. This process answers \gls{RQ}1, to which \glspl{G}1--2 are associated, as described in Section~\ref{sec:intro_goals}. The relationships between each process activity and \glspl{G} are here explained:
 
 \begin{enumerate}
     \item \textbf{Set requirements collaboratively}: this activity is key for the completion of \glspl{G}1-2, as it is an initial system analysis, performed together with the industrial supervisors, who are knowledgeable on Hopsworks' infrastructure. This task sets the project requirements and investigates what needs to be integrated at a high-level abstraction.
@@ -18,7 +18,7 @@ This process will produce a part of \gls{D}3, which is the code implementation f
 \begin{figure}[!t]
     \begin{center}
       \includegraphics[width=0.8\textwidth]{figures/3-method/method_code.png}
-    \caption[System integration process]{Diagram of the system integration process partially answering \gls{RQ}1. Each activity is associated to specific \glspl{G}. The process produces the integration detail (\gls{D}3 partial). The loop iterates until the functional requirements, defined in Section~\ref{subsec:integration_reqs}, are fulfilled.}
+    \caption[System integration process]{Diagram of the system integration process answering \gls{RQ}1. Each activity is associated to specific \glspl{G}. The process produces the integration detail (\gls{D}3 partial). The loop iterates until the functional requirements, defined in Section~\ref{subsec:integration_reqs}, are fulfilled.}
     \label{fig:method_code_schema}
     \end{center}
 \end{figure}
