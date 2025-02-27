@@ -26,7 +26,7 @@ Similar to the pipeline, the upload and materialization phases operate asynchron
 \subsection{Legacy system - Hudi - reading}
 \label{subsec:back_sys_hudi_read}
 
-Figure \ref{fig:hudi_read}~\footnote{For enhanced visualization, refer Figure \ref{fig:appx_hudi_reading_schema}.}  shows the offline feature store. Unlike the writing process, the process is not Spark-based and uses a Spark alternative: a combination of an Arrow Flight server and a DuckDB instance. This avoids the conversion into row-based tables for sending the data, keeping the unified standard Arrow Table, which is a column-oriented format.
+Figure \ref{fig:hudi_read}~\footnote{For enhanced visualization, refer Figure \ref{fig:appx_hudi_reading_schema}.}  shows the offline feature store. Conversely to the legacy system writing process, the reading process uses already a Spark alternative, which consists of a combination of an Arrow Flight server and a DuckDB instance. This was implemented by Hopsworks AI in order to direclty send the data in columnar format, without the need of convering them into row-based format.
 
 \begin{figure}
     \begin{center}

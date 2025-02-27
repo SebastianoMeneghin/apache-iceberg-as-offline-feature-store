@@ -148,8 +148,8 @@ Caches (sum of all):
 
 The system evaluation framework will evaluate the different system on three key aspects:
 \begin{enumerate}
-    \item \textbf{Functional requirements}: will be measured by verifying the success or failure of running an experiment. This will not happen by design, since the system integration phase stops only when all functional requirements are met. Those are escribed in Section \ref{subsec:integration_reqs}:
-    \item \textbf{Non-functional requirements}: Consistency and maintainability are mainly addressed during integration, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput, as defined in \gls{RQ}1.
+    \item \textbf{Functional requirements}: the success or failure of an experiment run will determine whether those are matched or not, and how much. This is an additional step, since only in the system integration process, the process is stopped and restarted from the beginning if the functional requirements are not met. These requirements are described in Section \ref{subsec:integration_reqs}.
+    \item \textbf{Non-functional requirements}: Consistency and maintainability are mainly addressed during integration. On the other hand, scalability is measured during the system evaluation experiments designed below. The metric used for measuring this requirement is the throughput, as defined in \gls{RQ}1.
     \item \textbf{How does the legacy pipeline compare to IcedHops?} this question answers directly \gls{RQ}2, measuring the throughput of the pipelines defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
 
